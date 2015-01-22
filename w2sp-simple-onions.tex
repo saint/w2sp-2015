@@ -1,0 +1,182 @@
+\documentclass[10pt, conference, compsocconf]{styles/IEEEtran}
+\usepackage{cite}
+\usepackage{balance}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{grffile} % multiple dots in filename
+\graphicspath{{figures/}}
+\DeclareGraphicsExtensions{.pdf}
+
+\usepackage[cmex10]{amsmath}
+\interdisplaylinepenalty=2500
+% \usepackage{algorithmic}
+%\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage{subfig}
+\usepackage{wrapfig}
+
+\usepackage{url}
+\usepackage[usenames,dvipsnames]{color}
+
+% should be loaded last (but before algorithm*) -colored links and refs
+\usepackage[colorlinks=true, citecolor=OliveGreen, linkcolor=BrickRed, urlcolor=MidnightBlue, final, pdftex]{hyperref}
+%\hypersetup
+%{
+%    pdfauthor={Authors},
+%    pdfsubject={Subject},
+%    pdftitle={Title},
+%    pdfkeywords={Keywords}
+%}
+
+\usepackage{xspace}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\setlength{\parskip}{0ex}
+
+%% Using watermark (this will mess up top/bottom margins)
+%\usepackage{styles/pdfdraftcopy}
+%\draftcolor{gray20}
+%\draftstring{
+%\begin{minipage}{17cm}
+%\begin{center}
+%\  DRAFT - \today\\Not approved for public release
+%\end{center}
+%\end{minipage}
+%}
+%\draftfontsize{36pt}
+
+% Another option; doesn't clobber margins, but doesn't seem to like multiple lines
+
+%\usepackage{draftwatermark}
+%\SetWatermarkText{DRAFT of \today. Not approved for public release}
+%\SetWatermarkScale{.2}
+%\SetWatermarkColor[rgb]{0.7,0.7,0.7}
+
+% custom commands
+\newcommand{\etal}{{\em et al.}}
+\newcommand{\naive}{na\"{\i}ve }
+%\newcommand{\point}[1]{\vspace{2mm} \noindent\textbf{#1}}
+\newcommand{\point}[1]{\noindent\textbf{#1}.}
+\newcommand{\todo}[1]{\textbf{\color{red}[TODO: #1]}}
+\newcommand{\rob}[1]{\textbf{\color{blue}[rob: #1]}}
+\newcommand{\citeme}{\textbf{\color{red} {cite}}\xspace}
+\renewcommand{\S}{Section~}
+\newcommand{\Eg}{\emph{E.g.}}
+\newcommand{\eg}{\emph{e.g.}}
+\newcommand{\etc}{\emph{etc}}
+\newcommand{\Ie}{\emph{I.e.}}
+\newcommand{\ie}{\emph{i.e.}}
+
+\newcommand{\ps}{TAPS\xspace}
+\newcommand{\compactify}{\settowidth{\labelsep}{o} \settowidth{\labelwidth}{o} \settowidth{\labelindent}{o}}
+
+\title{Simple, Fast, Flexible, and Cheap Website Authentication,
+  Integrity, and Traffic Security}
+
+\author{
+\IEEEauthorblockN{Paul Syverson}
+\IEEEauthorblockA{U.S. Naval Research Laboratory\\
+paul.syverson@nrl.navy.mil}
+\and
+\IEEEauthorblockN{Griffin Boyce}
+\IEEEauthorblockA{Institution1\\
+Email2}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  Use of Tor's .onion virtual domain has traditionally focused on offering
+  \emph{hidden services}, services that separate their reachability
+  from the identification of their IP addresses. This position paper
+  argues that Tor's Hidden Service Protocol and .onion addresses
+  provide an entirely separate benefit: website authentication that is
+  easy, fast, cheap and flexible to configure, deploy, and use.
+\end{abstract}
+
+% \input{sections/abstract}
+% \begin{IEEEkeywords}
+% anonymity; throttling; experimentation; Tor;
+% \end{IEEEkeywords}
+% \input{sections/introduction}
+% \input{sections/model}
+% \input{sections/metrics}
+% \input{sections/algorithm}
+% \input{sections/experiments}
+% \input{sections/performance}
+% \input{sections/errors}
+% \input{sections/propagation}
+% \input{sections/related}
+% \input{sections/conclusion}
+
+\section{Introduction}
+In this paper we explore using Tor's .onion infrastructure so that
+individuals operating a website can create authentication, integrity
+and other guarantees more simply, easily, fully, cheaply and/or flexibly
+than by relying on standard protocols and authorities.
+
+Tor's .onion sites have been advocated since their introduction as a
+way to protect network location information for servers not just
+clients~\cite{tor-design}. \footnote{Such advocacy actually predates
+  their introduction inasmuch as the same was said for web servers
+  contacted by reply onions~\cite{onion-routing:cacm99}, See
+  also~\cite{rewebber} for description of an implemented predecessor
+  to Tor's hidden services.}  Discussion in the popular press, as well
+as research to date, has focused almost exclusively on location hiding
+and associated properties provided by .onion sites and the protocols
+to interact with them. Indeed, these are generally referred to
+collectively as \emph{Tor Hidden Services} in the research literature
+and as the \emph{Dark Web} in the popular press. (Although so many
+importantly distinct things are often subsumed and run together under
+`Dark Web' as to rob the term of clear significance, other than as a
+warning flag that there may be a high probability of incoherent nonsense
+in what follows.)
+
+Our intent is to note the narrowness of this view of .onion sites. In
+particular we will discuss security protections they readily
+facilitate that are largely orthogonal to hiding server location. We
+hope by the end of this paper, the reader will agree that they should
+more properly be called \emph{.onion services} or in any case
+something that is more properly inclusive of the variety of security
+properties they offer.
+
+\section{Brief background on Tor and .onion services}
+
+We sketch out the basics of Tor and .onion services. For more detailed
+descriptions see the Tor design paper or other documentation at the
+Tor website~\cite{torproject}. For a high-level graphical description
+of .onion services see~\cite{tor-hs}. For a more up to date, and much
+more technical, description see the Tor Rendezvous
+Specification~\cite{tor-rend-spec}.
+
+
+
+
+
+%\point{Acknowledgments}
+% \section*{Acknowledgments}
+% We thank the anonymous reviewers for their feedback and suggestions.
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{22}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+ 
+\newcommand{\BIBdecl}{\setlength{\itemsep}{0\baselineskip plus 0.1\baselineskip minus 0.1\baselineskip}}
+\balance
+{\footnotesize 
+\bibliographystyle{styles/IEEEtran}
+\bibliography{references}
+}
+
+%\nocite{*}
+ 
+%\clearpage
+%\input{sections/appendix}
+
+\end{document}
