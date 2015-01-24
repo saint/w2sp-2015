@@ -81,8 +81,8 @@
 paul.syverson@nrl.navy.mil}
 \and
 \IEEEauthorblockN{Griffin Boyce}
-\IEEEauthorblockA{Institution1\\
-Email2}
+\IEEEauthorblockA{Open Internet Tools Project\\
+griffin@cryptolab.net}
 }
 
 \begin{document}
@@ -105,10 +105,10 @@ Email2}
 % anonymity; throttling; experimentation; Tor;
 % \end{IEEEkeywords}
 % \input{sections/introduction}
-% \input{sections/model}
-% \input{sections/metrics}
-% \input{sections/algorithm}
-% \input{sections/experiments}
+% \input{sections/Brief background on Tor and .onion services}
+% \input{sections/Knowing to which self to be true}
+% \input{sections/Our onions ourselves}
+% \input{sections/Considerations for Hidden Service Operators}
 % \input{sections/performance}
 % \input{sections/errors}
 % \input{sections/propagation}
@@ -315,8 +315,9 @@ matches the secure version. For example, we have made an authenticated
 version of http://cupcakebridge.com available at http://?????.onion
 \paul{Griffin, is this something you could do relatively easily so we
   can point at it by time of submission? I fugure it's also an easy
-  way to put in a side plug for cucake. If not, could you suggest an
+  way to put in a side plug for cupcake. If not, could you suggest an
   alternative?}
+\griffin{Yes, I can set that up.}
 
 Note that while Perspectives offers an improvement against certificate
 based MitM attacks, the approach just described is more resistant to
@@ -394,3 +395,9 @@ anyone with the key can impersonate an onion site, as the .onion
 address is inextricably tied to its key.  An adversary who acquires a
 TLS private key cannot impersonate a clearnet website, as the key is
 unrelated to the domain name.
+
+
+\section{Other Considerations for Hidden Service Operators}
+
+
+
