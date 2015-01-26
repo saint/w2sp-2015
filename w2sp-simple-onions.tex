@@ -127,7 +127,7 @@ pseudo-top-level domain .onion, which are only accessible via Tor.
 
 In this paper we explore using Tor's .onion infrastructure so that
 individuals operating a website can create authentication, integrity
-and other guarantees more simply, easily, fully, cheaply and/or flexibly
+and other guarantees more simply, easily, fully, cheaply, and flexibly
 than by relying on standard protocols and authorities.
 
 Tor's onionsites have been advocated since their introduction as a
@@ -328,9 +328,10 @@ version of http://cupcakebridge.com available at http://?????.onion
 One might ask why to even bother with the non-onionsite version. There
 are several reasons. First, this allows for a binding of the public
 domain name to the onionsite. As mentioned, .onion addresses are
-inherently not humanly meaningful unless one invests a lot of time and
-effort.  And to get a specific domain name of choice is
-technologically infeasible even then. The signed-onion technique
+inherently not humanly meaningful, which can lead to conusion among 
+end-users.  To get a specific domain name of choice is technologically
+infeasible even then, as .onion addresses are randomly-generated strings 
+of 16 digits. The signed-onion technique
 allows someone to choose and retain a desired domain name for the
 site, while still being able to offer an authenticated and integrity
 protected version easily. This also illustrates one of the pros
