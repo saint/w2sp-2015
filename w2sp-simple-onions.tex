@@ -305,10 +305,9 @@ still subject to controversy and have been subject to many of the same
 sorts of attacks as more well-known sites.  They might also not be
 the target of attacks but simply collateral victims. 
 
-Some users of this kind may
-not even have Internet accounts that allow them to set up
-servers. Onionsites are compliant with such a limitation since they
-actually only make outbound client connections. As a related
+Some users of this kind may not even have Internet accounts that allow 
+them to set up servers. Onionsites are compliant with such a limitation
+since they actually only make outbound client connections. As a related
 example of an existing usage, many people administering systems
 behind restrictive firewalls that only permit outbound connections
 currently use onion services to administer their systems.  Even if the
@@ -386,20 +385,34 @@ authentication of the onionsite in this case is limited to the trust
 in authentication of this TLS connection (and trust in Tor2web itself)
 regardless of the trust in the GPG signature.
 
-Finally, traditional search and indexing engines such as Google do
-not generally reflect links to onionsites. While there is an onionsite
-search engine, ahmia.fi~\cite{ahmia}, it is not well-known to
-people unfamiliar with Tor's .onion services. It is also limited to
-onionsites, so would not integrate results from the wider web.  And 
-unlike traditional search engines such as Google, ahmia's results are 
-opt-in rather than opt-out, leading to a skewed picture of the onion 
-site ecosystem.
+Finally, traditional search and indexing engines such as Google do not
+generally reflect links to onionsites. While there is an onionsite
+search engine, ahmia.fi~\cite{ahmia}, it is not well-known to people
+unfamiliar with Tor's .onion services. It is also limited to
+onionsites, so would not integrate results from the wider web.  And
+unlike traditional search engines such as Google, wikis and other
+user-generated lists of onionsites lead to a skewed picture of the
+entire ecosystem.
+
 \paul{I don't think this is true. Ahmia's results come from
 crawls of .onion space, not just from onionsites that have created
 an opt-in.}
-\griffin{I believe they are only crawling sites to grab their text. They have an add form, so not sure}
+\griffin{Line changed}
 
 \section{Usability, Convenience, and Security}
+
+As most onionsite visitors use the Tor Browser, deployment and
+debugging of hidden services can be faster than their clearnet
+counterparts because there is only one browser to test, with only
+minor variation across users.  Website operators can assume that users
+do not have AdBlock or other browser extensions that may impact how
+content is displayed.  However, plugins that may mitigate Tor
+Browser's privacy protections, such as Java and Flash, have been
+disabled by default.  Many privacy-conscious users do enable the
+NoScript extension to block javascript as well.  Despite this, rich
+content such as video, audio, and interactive storytelling are still
+available for designers willing to use HTML5 and CSS3 to display such
+content.
 
 What we have described so far implies a relatively manual
 authentication of PGP/GPG signatures. It would be natural and
@@ -409,14 +422,15 @@ There are already related tools. For example, Enigform is a
 Mozilla Firefox extension to support OpenPGP signed HTTP requests.
 And various social trust visualization tools exist.
 
-Our approach presents a natural complement to Perspectives.
-Perspectives offers an improvement against
+Our approach presents a natural complement to Perspectives and similar
+endeavors. Perspectives offers an improvement against
 certificate based MitM attacks. But if a site is newly available
 the onionsite can still be trusted to be bound to the signing
 authority whereas a self-signed certificate will have little or no
 Perspective history and users are reduced to effectively a tofu
 decision. Also, Perspective notaries largely function as
 detectors of certificate misbehavior. 
+
 Thus if, e.g., a typo-squatting site uses a self-signed certificate to
 pass through connections to the site on which it is squatting, but
 does not misbehave or alter its key, Perspectives will not reflect
@@ -466,6 +480,8 @@ propagate a new onion address and associated keys. Unless this
 verification by .onion key of TLS key is also to be done manually,
 this would involve either a change to the current .onion directory
 protocols or another plugin, depending how it is done.
+
+
 
 \section{Conclusion}
 
@@ -526,26 +542,6 @@ anyone with the key can impersonate an onion site, as the .onion
 address is inextricably tied to its key.  An adversary who acquires a
 TLS private key cannot impersonate a clearnet website, as the key is
 unrelated to the domain name.
-
-
-
-
-\section{Other Considerations for Hidden Service Operators}
-
-As most onionsite visitors use the Tor Browser, deployment and
-debugging of hidden services can be faster than their clearnet
-counterparts because there is only one browser to test, with only
-minor variation across users.  Website operators can assume that users
-do not have AdBlock or other browser extensions that may impact how
-content is displayed.  However, plugins that may mitigate Tor
-Browser's privacy protections, such as Java and Flash, have been
-disabled by default.  Many privacy-conscious users do enable the
-NoScript extension to block javascript as well.  Despite this, rich
-content such as video, audio, and interactive storytelling are still
-available for designers willing to use HTML5 and CSS3 to display such
-content.
-
-
 
 
   An
