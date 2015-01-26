@@ -508,7 +508,24 @@ TLS private key cannot impersonate a clearnet website, as the key is
 unrelated to the domain name.
 
 
+
+
 \section{Other Considerations for Hidden Service Operators}
+
+As most onionsite visitors use the Tor Browser, deployment and debugging of hidden services can be faster than their clearnet counterparts because there is only one browser to test, with only minor variation across users.  Website operators can assume that users do not have AdBlock or other browser extensions that may impact how content is displayed.  However, plugins that may mitigate Tor Browser's privacy protections, such as Java and Flash, have been disabled by default.  Many privacy-conscious users do enable the NoScript extension to block javascript as well.  Despite this, rich content such as video, audio, and interactive storytelling are still available for designers willing to use HTML5 and CSS3 to display such content.
+
+
+
+Authenticated hidden services are another appealing option for those who'd like to secure their hidden service for personal use.  Unlike traditional websites that appear online prior to authentication, unauthenticated visitors to these onion sites will not be able to determine that the service exists, nor will they be able to probe it for vulnerabilities.  These qualities make an ideal environment for operating a personal cloud service.  With privacy and cost in mind, many people are operating their own cloud infrastructure to store files and calendar entries using open-source systems such as Cozy and OwnCloud~\cite{cozy}.  Another common use of authenticated hidden services is as personal RSS readers, as onionsites ensure some level of feed integrity (particularly important when fetching news feeds that do not utilize TLS).  
+
+To create an authenticated hidden service, the operator includes an extra line in their configuration file defining \emph{HiddenServiceAuthorizeClient} 
+
+ \emph{HidServAuth onion-address auth-cookie}
+
+
+  An
+additional benefit to this self-authentication is that it provides 
+some protection from missing, blocked, or hijacked DNS servers.
 
 
 
