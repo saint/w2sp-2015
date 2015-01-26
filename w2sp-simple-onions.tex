@@ -225,47 +225,34 @@ Why not just obtain certificates from traditional authorities as
 DuckDuckGo and Facebook have done? For many server operators, getting
 even a basic server certificate is just too much of a hassle. The
 application process can be confusing. It usually costs money. It's
-tricky to install correctly. It's a pain to update. This is not 
-original observation. Indeed that description is actually a quote
-from the blog of
-Let's Encrypt, a new certificate authority dedicated among other
-things to making TLS certification free and automatic~\cite{lets-encrypt}.
+tricky to install correctly. It's a pain to update. This is not
+original observation. Indeed that description is actually a quote from
+the blog of Let's Encrypt, a new certificate authority dedicated among
+other things to making TLS certification free and automatic~\cite
+{lets-encrypt}.
 
-As of this writing, Let's Encrypt is still a few months away
-from offering their services.
-Should they be willing to offer certificates for .onion
-domains, using Let's Encrypt would be an easy way for
-onionsite operators to take advantage of the traditional certification
-infrastructure. Traditional certificates are not without problems,
-however. The nature of the trust hierarchy is opaque to direct usage,
-and the sheer number of trusted authorities is large enough to be of
-concern. In particular, there have been numerous documented cases of
-governmental man-in-the-middle attacks through certificate
-manipulation and hacking of certificate authorities leading to use of
-fraudulent certificates for some of the most popular websites.
+As of this writing, Let's Encrypt is still a few months away from offering their services.  Should they be willing to offer certificates for .onion domains, using Let's Encrypt would be an easy way for onionsite operators to take advantage of the traditional certification infrastructure. Traditional certificates are not without problems, however. The nature of the trust hierarchy is opaque to direct usage, and the sheer number of trusted authorities is large enough to be of concern. In particular, there have been numerous documented cases of governmental man-in-the-middle attacks through certificate manipulation and hacking of certificate authorities leading to use of fraudulent certificates for some of the most popular websites.
 
 The EFF's SSL Observatory~\cite{ssl-observatory} is designed to
 monitor for such problems and document their occurrence, while
-Google's Certificate Transparency
-Effort~\cite{certificate-transparency} is a similar but broader
-initiative that adds (amongst other things) append-only signed public
-logs that make certificate shenanigans all the harder to bring off
-undetectably.
+Google's Certificate Transparency Effort~\cite{certificate-
+transparency} is a similar but broader initiative that adds (amongst
+other things) append-only signed public logs that make certificate
+shenanigans all the harder to bring off undetectably.
 
 Rather than simply monitor and make available certificate authority
 problems, the Perspectives Project~\cite{perspectives}, through its
-Firefox extension, strives to
-provide end users with control over the trust they place in website
-certificates. Improving user flexibility
-and control is one of our goals as well. Instead of trusting
-anointed CAs, semi-trusted network notaries probe network services and
-build a record of public keys those services have used over time,
-somewhat similar to the approach of certificate transparency. Users
-can choose which notaries they wish to trust, and clients encountering
-unfamiliar public keys will query notaries for a history of keys used
-by a service~\cite{perspectives-paper}. This is especially intended to
+Firefox extension, strives to provide end users with control over the
+trust they place in website certificates. Improving user flexibility
+and control is one of our goals as well. Instead of trusting anointed
+CAs, semi-trusted network notaries probe network services and build a
+record of public keys those services have used over time, somewhat
+similar to the approach of certificate transparency. Users can choose
+which notaries they wish to trust, and clients encountering unfamiliar
+public keys will query notaries for a history of keys used by a
+service~\cite{perspectives-paper}. This is especially intended to
 enhance trust on first use (tofu) authentication, although it can also
-supplement traditional CA based PKI security. 
+supplement traditional CA based PKI security.
 
 %While Perspectives
 %provides security over time for self-signed certificates, it is still
