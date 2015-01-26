@@ -366,15 +366,22 @@ unlike traditional search engines such as Google, ahmia's results are
 opt-in rather than opt-out, leading to a skewed picture of the onion 
 site ecosystem.
 
-\section{Usability and Convenience}
+\section{Usability, Convenience, and Security}
 
 What we have described so far implies a relatively manual
-authentication of GPG signatures. It would be natural and
+authentication of PGP/GPG signatures. It would be natural and
 straightforward to create a plugin that verifies the signature
-and provides an easily understable indicator of trust in it.
-Mention enigform for OpenPGP signed HTTP requests.
+and provides different indications depending on the trust in it.
+There are already related tools. For example, Enigform is a
+Mozilla Firefox extension to support OpenPGP signed HTTP requests.
+And various social trust visualization tools exist.
 
-Even people who could not 
+PGP and its successors also remain much less familiar than
+TLS. Assuming Let's Encrypt is successful, and
+HTTPS at no additional cost is increasingly available from ISPs,
+we can also envisage incorporation with TLS signatures as
+Facebook and others have done.
+
 
 Talk about the following: Many people are unfamiliar with PGP. Use
 with traditional signatures.  Even with the other stuff (Let's
