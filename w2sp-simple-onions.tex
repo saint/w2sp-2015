@@ -183,7 +183,7 @@ a web connection over this rendezvous circuit.
 
 Since the onionsite only communicates over Tor circuits it creates,
 this protocol hides its network location. And that is the feature that
-gives it the name 'hidden service'. But, there are other important
+gives it the name `hidden service'. But, there are other important
 features to the .onion system, notably self-authentication. The .onion
 address is actually the hash of the public key of the onionsite. For
 example, if one wishes to connect to the DuckDuckGo search engine's
@@ -210,8 +210,8 @@ offers a certificate for its .onion address issued by DigiCert.
 Similarly, FaceBook offers a DigiCert certificate.
 
 Though cryptographic binding is essential to the technical mechanisms
-of trust, users also rely on human-readable familiarity. that their
-browser graphically indicates they have made a certified encrypted
+of trust, users also rely on human-readable familiarity, for example, that
+their browser graphically indicates they have made a certified encrypted
 connection as a result of typing facebook.com into the browser.  To
 some extent, it is at least possible to make use of this in .onion
 space. By generating many keys whose hash had `facebook' as initial
@@ -230,8 +230,8 @@ from the blog of
 Let's Encrypt, a new certificate authority dedicated among other
 things to making TLS certification free and automatic~\cite{lets-encrypt}.
 
-As of this writing, Let's Encrypt is still a few months away offering
-their services.
+As of this writing, Let's Encrypt is still a few months away
+from offering their services.
 Should they be willing to offer certificates for .onion
 domains, using Let's Encrypt would be an easy way for
 onionsite operators to take advantage of the traditional certification
@@ -252,9 +252,10 @@ logs that make certificate shenanigans all the harder to bring off
 undetectably.
 
 Rather than simply monitor and make available certificate authority
-problems, the Perspectives Project~\cite{perspectives}, strives to
-provide end user's with control over the trust they place in website
-certificates through its Firefox Extension. Improving user flexibility
+problems, the Perspectives Project~\cite{perspectives}, through its
+Firefox extension, strives to
+provide end users with control over the trust they place in website
+certificates. Improving user flexibility
 and control is one of our goals as well. Instead of trusting
 anointed CAs, semi-trusted network notaries probe network services and
 build a record of public keys those services have used over time,
@@ -270,29 +271,29 @@ independent notary system.
 
 \section{Our onions ourselves}
 
-As noted, onionsites already provide a self-authenticed binding of
+As noted, onionsites already provide a self-authenticated binding of
 public key to onion address, but lack a way to bind that public key to
 something familiar for the site in question.  Even for hidden
 service applications, it might still be desired to connect the
 onionsite to some sort of pseudonymous reputation.  For us, however,
 the location hiding aspect is largely orthogonal.  We would like a solution
 that will work for all kinds of sites, but we are especially
-interested in providing authentication for small and/or shortlived
-websites, e.g., personal webpages, hometown sports teams, sites for
+interested in providing authentication for small and/or short-lived
+websites, e.g., personal web pages, hometown sports teams, sites for
 local one-time events, small businesses, municipal election campaigns,
 etc.  Though not such large targets as more popular sites, they are
 still subject to controversy and have been subject to many of the same
-sorts of attacks as more wellknown sites.  They might also not be
+sorts of attacks as more well-known sites.  They might also not be
 the target of attacks but simply collateral victims. 
 
 Some users of this kind may
 not even have Internet accounts that allow them to set up
 servers. Onionsites are compliant with such a limitation since they
 actually only make outbound client connections. As a related
-example of an existing usage, many people administrating systems
+example of an existing usage, many people administering systems
 behind restrictive firewalls that only permit outbound connections
-currently use onion services to adminster their systems.  Even if the
-user has an Internet account that permits setting up a webpage, HTTPS
+currently use onion services to administer their systems.  Even if the
+user has an Internet account that permits setting up a web page, HTTPS
 may not be available from that provider or only available for an
 additional fee.
 
@@ -332,11 +333,11 @@ version of http://cupcakebridge.com available at http://eynfqhbaq5yecx6s.onion.
 One might ask why to even bother with the non-onionsite version. There
 are several reasons. First, this allows for a binding of the public
 domain name to the onionsite. As mentioned, .onion addresses are
-inherently not humanly meaningful, which can lead to conusion among 
-end-users.  To get a specific domain name of choice is technologically
-infeasible even then, as .onion addresses are randomly-generated strings 
-of 16 digits. The signed-onion technique
-allows someone to choose and retain a desired domain name for the
+inherently not humanly meaningful, which can lead to confusion among 
+end-users.  To get a the entirety of a specific domain name of choice is
+technologically infeasible even then, as .onion addresses are
+randomly-generated alphanumeric strings of 16 digits. The signed-onion
+technique allows someone to choose and retain a desired domain name for the
 site, while still being able to offer an authenticated and integrity
 protected version easily. This also illustrates one of the pros
 of using GPG or similar signatures. If the authentication simply
@@ -355,7 +356,7 @@ Though installation is a simple point-and-click download, many may be
 disinclined against even this small effort. The onionsite would still
 be available via Tor2web, a website that proxies connections from
 non-Tor clients to onionsites~\cite{tor2web}.  To connect to a .onion
-address, one enter a url such as the following for reaching
+address, one enter a URL such as the following for reaching
 DuckDuckGo's onionsite via Tor2web:
 https://3g2upl4pq6kufc4m.tor2web.org/ The Tor2web site explicitly
 states that ``Tor2web only protects publishers, not readers.'' This is
@@ -363,10 +364,10 @@ because the client connects to Tor2web over a direct TLS connection
 rather than via Tor, as would be the case of someone connecting to
 3g2upl4pq6kufc4m.onion via the Tor Browser.  For our purposes,
 authentication of the onionsite in this case is limited to the trust
-in authentication of this connection (and trust in Tor2web itself)
+in authentication of this TLS connection (and trust in Tor2web itself)
 regardless of the trust in the GPG signature.
 
-Finally, traditional search and indexing engines such as google do
+Finally, traditional search and indexing engines such as Google do
 not generally reflect links to onionsites. While there is an onionsite
 search engine, ahmia.fi~\cite{ahmia}, it is not well-known to
 people unfamiliar with Tor's .onion services. It is also limited to
@@ -374,6 +375,9 @@ onionsites, so would not integrate results from the wider web.  And
 unlike traditional search engines such as Google, ahmia's results are 
 opt-in rather than opt-out, leading to a skewed picture of the onion 
 site ecosystem.
+\paul{I don't think this is true. Ahmia's results come from
+crawls of .onion space, not just from onionsites that have created
+an opt-in.}
 
 \section{Usability, Convenience, and Security}
 
@@ -386,14 +390,14 @@ Mozilla Firefox extension to support OpenPGP signed HTTP requests.
 And various social trust visualization tools exist.
 
 Our approach presents a natural complement to Perspectives.
-Perspectives offers an protection against improvement against
+Perspectives offers an improvement against
 certificate based MitM attacks. But if a site is newly available
 the onionsite can still be trusted to be bound to the signing
 authority whereas a self-signed certificate will have little or no
 Perspective history and users are reduced to effectively a tofu
 decision. Also, Perspective notaries largely function as
 detectors of certificate misbehavior. 
-Thus if, e.g., a typosquatting site uses a self-signed certificate to
+Thus if, e.g., a typo-squatting site uses a self-signed certificate to
 pass through connections to the site on which it is squatting, but
 does not misbehave or alter its key, Perspectives will not reflect
 anything wrong with the sites, whereas our approach will presumably
@@ -448,9 +452,9 @@ protocols or another plugin, depending how it is done.
 In this paper we have described how Tor's onion services can be used
 not for the usual stated purpose of hiding server network location,
 but for website authentication.  We have also argued that onion
-services offer users, a simple, effectve, cheap and flexible means of
+services offer users, a simple, effective, cheap and flexible means of
 authentication with security advantages not provided by existing
-approaches. We hope people will find this useful and beign employing
+approaches. We hope people will find this useful and begin employing
 it. We also hope this will encourage others to explore this
 fascinating system for other interesting properties and applications.
 
