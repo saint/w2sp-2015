@@ -264,10 +264,23 @@ can choose which notaries they wish to trust, and clients encountering
 unfamiliar public keys will query notaries for a history of keys used
 by a service~\cite{perspectives-paper}. This is especially intended to
 enhance trust on first use (tofu) authentication, although it can also
-supplement traditional CA based PKI security. While Perspectives
-provides security over time for self-signed certificates, it is still
-subject to tofu assumptions and dependent on the setup of an adequate
-independent notary system.
+supplement traditional CA based PKI security. 
+
+%While Perspectives
+%provides security over time for self-signed certificates, it is still
+%subject to tofu assumptions and dependent on the setup of an adequate
+%independent notary system.
+
+%\section{Other Considerations for Onion Service Operators}
+
+
+% To create an authenticated hidden service, the operator includes an
+% extra line in their configuration file defining
+% \emph{HiddenServiceAuthorizeClient}
+% 
+%  \emph{HidServAuth onion-address auth-cookie}
+% 
+% 
 
 
 
@@ -288,16 +301,32 @@ still subject to controversy and have been subject to many of the same
 sorts of attacks as more well-known sites.  They might also not be
 the target of attacks but simply collateral victims. 
 
-Some users of this kind may
-not even have Internet accounts that allow them to set up
-servers. Onionsites are compliant with such a limitation since they
-actually only make outbound client connections. As a related
+Some users of this kind may not even have Internet accounts that allow 
+them to set up servers. Onionsites are compliant with such a limitation
+since they actually only make outbound client connections. As a related
 example of an existing usage, many people administering systems
 behind restrictive firewalls that only permit outbound connections
 currently use onion services to administer their systems.  Even if the
 user has an Internet account that permits setting up a web page, HTTPS
 may not be available from that provider or only available for an
 additional fee.
+
+We are primarily focused on improvements to authentication using
+onionsites and thus mostly leave properties of network location hiding
+aside as orthogonal to our goals. They can be complementary, however.
+Authenticated hidden services are a appealing option for those
+who'd like to secure their onionsites for personal use.  Unlike
+traditional websites that appear online prior to authentication,
+unauthenticated visitors to these sites will not be easily able to
+determine that the service exists, nor will they be able to probe it
+for vulnerabilities.  These qualities make an ideal environment for
+operating a personal cloud service.  With privacy and cost in mind,
+many people are operating their own cloud infrastructure to store
+files and calendar entries using open-source systems such as Cozy and
+OwnCloud~\cite{cozy}.  Another common use of authenticated hidden
+services is as personal RSS readers, as onionsites ensure some level
+of feed integrity (particularly important when fetching news feeds
+that do not utilize TLS).
 
 Of course one can always create a Facebook page or something similar
 that is protected by HTTPS and TLS certificates,
@@ -369,21 +398,16 @@ authentication of the onionsite in this case is limited to the trust
 in authentication of this TLS connection (and trust in Tor2web itself)
 regardless of the trust in the GPG signature.
 
-Finally, traditional search and indexing engines such as Google do
-not generally reflect links to onionsites. While there is an onionsite
-search engine, ahmia.fi~\cite{ahmia}, it is not well-known to
-people unfamiliar with Tor's .onion services. It is also limited to
-onionsites, so would not integrate results from the wider web.  And 
-unlike traditional search engines such as Google, ahmia's results are 
-opt-in rather than opt-out, leading to a skewed picture of the onion 
-site ecosystem.
-\paul{I don't think this is true. Ahmia's results come from
-crawls of .onion space, not just from onionsites that have created
-an opt-in.}
+Finally, traditional search and indexing engines such as Google do not
+generally reflect links to onionsites. While there is an onionsite
+search engine, ahmia.fi~\cite{ahmia}, it is not well-known to people
+unfamiliar with Tor's .onion services. It is also limited to
+onionsites, so would not integrate results from the wider web.  
+Crawling and indexing of onionsites is also in its infancy and can
+thus not be expected to be as appropriately representative as the much
+more mature indexing of the surface web by Google and similar sites.
 
-
-
-\section{Other Considerations for Onion Service Operators}
+\section{Usability, Convenience, and Security}
 
 As most onionsite visitors use the Tor Browser, deployment and
 debugging of hidden services can be faster than their clearnet
@@ -398,36 +422,6 @@ content such as video, audio, and interactive storytelling are still
 available for designers willing to use HTML5 and CSS3 to display such
 content.
 
-We are primarily focused on improvements to authentication using
-onionsites and thus mostly leave properties of hiding 
-
-Authenticated hidden services are another appealing option for those
-who'd like to secure their onionsites for personal use.  Unlike
-traditional websites that appear online prior to authentication,
-unauthenticated visitors to these sites will not be able to
-determine that the service exists, nor will they be able to probe it
-for vulnerabilities.  These qualities make an ideal environment for
-operating a personal cloud service.  With privacy and cost in mind,
-many people are operating their own cloud infrastructure to store
-files and calendar entries using open-source systems such as Cozy and
-OwnCloud~\cite{cozy}.  Another common use of authenticated hidden
-services is as personal RSS readers, as onionsites ensure some level
-of feed integrity (particularly important when fetching news feeds
-that do not utilize TLS).
-
-% To create an authenticated hidden service, the operator includes an
-% extra line in their configuration file defining
-% \emph{HiddenServiceAuthorizeClient}
-% 
-%  \emph{HidServAuth onion-address auth-cookie}
-% 
-% 
-An additional benefit to this self-authentication is that it provides 
-some protection from missing, blocked, or hijacked DNS servers.
-
-
-\section{Usability, Convenience, and Security}
-
 What we have described so far implies a relatively manual
 authentication of PGP/GPG signatures. It would be natural and
 straightforward to create a plugin that verifies the signature
@@ -436,14 +430,15 @@ There are already related tools. For example, Enigform is a
 Mozilla Firefox extension to support OpenPGP signed HTTP requests.
 And various social trust visualization tools exist.
 
-Our approach presents a natural complement to Perspectives.
-Perspectives offers an improvement against
+Our approach presents a natural complement to Perspectives and similar
+endeavors. Perspectives offers an improvement against
 certificate based MitM attacks. But if a site is newly available
 the onionsite can still be trusted to be bound to the signing
 authority whereas a self-signed certificate will have little or no
 Perspective history and users are reduced to effectively a tofu
 decision. Also, Perspective notaries largely function as
 detectors of certificate misbehavior. 
+
 Thus if, e.g., a typo-squatting site uses a self-signed certificate to
 pass through connections to the site on which it is squatting, but
 does not misbehave or alter its key, Perspectives will not reflect
@@ -494,6 +489,8 @@ verification by .onion key of TLS key is also to be done manually,
 this would involve either a change to the current .onion directory
 protocols or another plugin, depending how it is done.
 
+
+
 \section{Conclusion}
 
 In this paper we have described how Tor's onion services can be used
@@ -504,10 +501,6 @@ authentication with security advantages not provided by existing
 approaches. We hope people will find this useful and begin employing
 it. We also hope this will encourage others to explore this
 fascinating system for other interesting properties and applications.
-
-
-
-Still to do: GSA use etc. ?
 
 
 
@@ -559,6 +552,12 @@ TLS private key cannot impersonate a clearnet website, as the key is
 unrelated to the domain name.
 
 
+<<<<<<< HEAD
+=======
+  An
+additional benefit to this self-authentication is that it provides 
+some protection from missing, blocked, or hijacked DNS servers.
+>>>>>>> 2fd6d33bd1a799191e692fe4498d5de8f77a7769
 
 
 
