@@ -435,23 +435,25 @@ endeavors. Perspectives offers an improvement against
 certificate based MitM attacks. But if a site is newly available
 the onionsite can still be trusted to be bound to the signing
 authority whereas a self-signed certificate will have little or no
-Perspective history and users are reduced to effectively a tofu
-decision. Also, Perspective notaries largely function as
+Perspectives history and users are reduced to effectively a tofu
+decision. Also, Perspectives notaries largely function as
 detectors of certificate misbehavior. 
 
-Thus if, e.g., a typo-squatting site uses a self-signed certificate to
-pass through connections to the site on which it is squatting, but
-does not misbehave or alter its key, Perspectives will not reflect
-anything wrong with the sites, whereas our approach will presumably
+For example, consider a typo-squatting site that uses a self-signed
+certificate to pass through connections to the site on which it is
+squatting, but
+does not misbehave or alter its key. Perspectives will not reflect
+anything wrong with such a site, whereas our approach will presumably
 not give the site a high degree of trust unless the squatter has
-that trust from us exogenously.
+that trust exogenously.
 
 Our approach also can be used (at least in manual form) right now by
-website operators. While it can benefit from usability developments
-and simplification and can complement other approaches. It does not
+website operators. It would benefit from usability developments
+and simplification, and it can complement other approaches. It does not,
+however,
 rely fundamentally on the deployment and continued commitment to new
-infrastructure that is specifically for website authentication.  It
-can rely on whatever authentication infrastructure might be popular
+infrastructure that is specific to it.  It can instead
+rely on whatever authentication infrastructure might be popular
 and likely to be maintained for independent reasons, rather than
 needing to grow and maintain interest in its approach.
 
@@ -459,8 +461,8 @@ PGP and its successors also remain less familiar than TLS. For those
 who do not obtain protection from its web of trust, TLS certificates
 are likely to remain the primary ground of linking public, human
 readable domain names to the signatures authenticating
-websites. Assuming Let's Encrypt is successful, and HTTPS at no
-additional cost is increasingly available from ISPs, we can also
+websites. Assuming Let's Encrypt is successful, and no-additional-cost
+HTTPS is increasingly available from ISPs, we can also
 envisage incorporation of TLS with onionsites for even the
 ``everyman'' users described above.  To the extent that this
 incorporation follows what Facebook and DuckDuckGo have done, the
@@ -486,10 +488,8 @@ bypassed by a simple up-hierarchy certificate hijack. Now the hijacker
 would need to not only subvert some CA, he must also create and
 propagate a new onion address and associated keys. Unless this
 verification by .onion key of TLS key is also to be done manually,
-this would involve either a change to the current .onion directory
+such integration would involve either a change to the current .onion directory
 protocols or another plugin, depending how it is done.
-
-
 
 \section{Conclusion}
 
