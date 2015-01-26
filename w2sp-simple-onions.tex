@@ -269,6 +269,25 @@ provides security over time for self-signed certificates, it is still
 subject to tofu assumptions and dependent on the setup of an adequate
 independent notary system.
 
+Authenticated hidden services are another appealing option for those
+who'd like to secure their hidden service for personal use.  Unlike
+traditional websites that appear online prior to authentication,
+unauthenticated visitors to these onion sites will not be able to
+determine that the service exists, nor will they be able to probe it
+for vulnerabilities.  These qualities make an ideal environment for
+operating a personal cloud service.  With privacy and cost in mind,
+many people are operating their own cloud infrastructure to store
+files and calendar entries using open-source systems such as Cozy and
+OwnCloud~\cite{cozy}.  Another common use of authenticated hidden
+services is as personal RSS readers, as onionsites ensure some level
+of feed integrity (particularly important when fetching news feeds
+that do not utilize TLS).  
+
+To create an authenticated hidden service, the operator includes an
+extra line in their `torrc' configuration file defining
+\emph{HiddenServiceAuthorizeClient}.  Upon restarting the `tor' process, the generated authentication data is available in the hostname file.  To access an onionsite with this feature enabled, a user adds \emph{HidServAuth onion-address auth-cookie} to their configuration and restarts their process (and the Tor Browser) before visiting the service.
+
+
 \section{Our onions ourselves}
 
 As noted, onionsites already provide a self-authenticated binding of
@@ -460,10 +479,6 @@ fascinating system for other interesting properties and applications.
 
 
 
-Still to do: GSA use etc. ?
-
-
-
 %\point{Acknowledgments}
 % \section*{Acknowledgments}
 % We thank the anonymous reviewers for their feedback and suggestions.
@@ -530,26 +545,6 @@ available for designers willing to use HTML5 and CSS3 to display such
 content.
 
 
-
-Authenticated hidden services are another appealing option for those
-who'd like to secure their hidden service for personal use.  Unlike
-traditional websites that appear online prior to authentication,
-unauthenticated visitors to these onion sites will not be able to
-determine that the service exists, nor will they be able to probe it
-for vulnerabilities.  These qualities make an ideal environment for
-operating a personal cloud service.  With privacy and cost in mind,
-many people are operating their own cloud infrastructure to store
-files and calendar entries using open-source systems such as Cozy and
-OwnCloud~\cite{cozy}.  Another common use of authenticated hidden
-services is as personal RSS readers, as onionsites ensure some level
-of feed integrity (particularly important when fetching news feeds
-that do not utilize TLS).
-
-To create an authenticated hidden service, the operator includes an
-extra line in their configuration file defining
-\emph{HiddenServiceAuthorizeClient}
-
- \emph{HidServAuth onion-address auth-cookie}
 
 
   An
