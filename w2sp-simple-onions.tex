@@ -144,14 +144,14 @@ collectively as \emph{Tor Hidden Services} in the research literature
 and as the \emph{Dark Web} in the popular press. (Although so many
 importantly distinct things are often subsumed and run together under
 `Dark Web' as to rob the term of clear significance, other than as a
-warning flag to watch out for the hidden incoherence that surrounds
+caution flag for the hidden incoherence that surrounds
 most occasions of its use.)
 
 Our intent is to challenge the narrowness of this view of
 onionsites. In particular we will discuss security protections they
 readily facilitate that are largely orthogonal to hiding server
-location. We hope by the end of this paper, the reader will agree that
-they should more properly be called \emph{onion services} or in any
+location. We hope by the end of this paper the reader will agree that
+they should be called \emph{onion services} or in any
 case something that is more properly inclusive of the variety of
 security properties they offer.
 
@@ -202,7 +202,7 @@ information to the 3g2upl4pq6kufc4m.onion address. What a user would
 like to be assured of is that s/he is reaching DuckDuckGo. Presumably
 the user wants the search results DuckDucGo offers and not what might
 be returned by some other, possibly malicious, server.  In addition to
-the integrity guarantee, the user relies on authentication so that its
+the integrity guarantee, the user relies on authentication so that
 queries are revealed only to DuckDuckGo and not to others. The .onion
 address by itself does not offer this. Making use of the traditional
 web trust infrastructure, DuckDuckGo and Facebook offer certificates
@@ -211,13 +211,13 @@ users are not misled by onionsites purporting to be official.
 
 Though cryptographic binding is essential to the technical mechanisms
 of trust, users also rely on human-readable familiarity, for example,
-that their browser graphically indicates they have made a certified
-encrypted connection as a result of typing Facebook.com into the
+that the browser graphically indicates s/he has made a certified
+encrypted connection as a result of typing facebook.com into the
 browser.  To some extent, it is at least possible to make use of this
-in .onion space. By generating many keys whose hash had `Facebook' as
+in .onion space. By generating many keys whose hash had `facebook' as
 initial string and then looking among the full hashes for an
 adequately felicitous result, Facebook was able to obtain
-Facebookcorewwwi.onion for its address. Whatever its value for
+facebookcorewwwi.onion for its address. Whatever its value for
 Facebook, this is clearly not something that will work widely, as it
 is difficult to generate custom addresses in this way.
 
@@ -225,23 +225,25 @@ Why not just obtain certificates from traditional authorities as
 DuckDuckGo and Facebook have done? For many server operators, getting
 even a basic server certificate is just too much of a hassle. The
 application process can be confusing. It usually costs money. It's
-tricky to install correctly. It's a pain to update. These are not 
-original observations. Indeed that description is actually a quote
-from the blog of
-Let's Encrypt, a new certificate authority dedicated, among other
-things, to making TLS certification free and automatic~\cite{lets-encrypt}.
+tricky to install correctly. It's a pain to update. 
 
+These are not original observations. Indeed that description is
+actually a quote from the blog of Let's Encrypt, a new certificate
+authority dedicated, among other things, to making TLS certification
+free and automatic~\cite{lets-encrypt}.
 As of this writing, Let's Encrypt is still a few months away
 from offering their services.
 Should they be willing to offer certificates for .onion
 domains, using Let's Encrypt would be an easy way for
 onionsite operators to take advantage of the traditional certification
-infrastructure. Traditional certificates are not without problems,
+infrastructure. 
+
+Traditional certificates are not without problems,
 however. The nature of the trust hierarchy is opaque to direct usage,
 and the sheer number of trusted authorities is large enough to be of
 concern. In particular, there have been numerous documented cases of
 governmental man-in-the-middle attacks through certificate
-manipulation and hacking of certificate authorities leading to use of
+manipulation, as well as hacking of certificate authorities leading to use of
 fraudulent certificates for some of the most popular websites.
 
 The EFF's SSL Observatory~\cite{ssl-observatory} is designed to
@@ -287,7 +289,7 @@ supplement traditional CA based PKI security.
 
 As noted, onionsites already provide a self-authenticated binding of
 public key to onion address, but lack a way to bind that public key to
-something familiar for the site in question.  Even for hidden
+something recognizably familiar for the site in question.  Even for hidden
 service applications, it might still be desired to connect the
 onionsite to some sort of pseudonymous reputation.  For us, however,
 the location hiding aspect is largely orthogonal.  We would like a solution
@@ -295,7 +297,7 @@ that will work for all kinds of sites, but we are especially
 interested in providing authentication for small and/or short-lived
 websites, e.g., personal web pages, hometown sports teams, sites for
 local one-time events, small businesses, municipal election campaigns,
-etc.  Though not such large targets as more popular sites, they are
+etc.  Though not such large targets as more popular long-lived sites, they are
 still subject to controversy and have been subject to many of the same
 sorts of attacks as more well-known sites.  They might also not be
 the target of attacks but simply collateral victims. 
@@ -331,8 +333,8 @@ that do not utilize TLS).
 Of course one can always create a Facebook page or something similar
 that is protected by HTTPS and TLS certificates,
 and this is often done.  But this makes the service dependent on the
-reputation, trust, policies, and protections of such a host and the
-dynamics thereof, rather than allowing the user to readily understand
+reputation, trust, policies, and protections of such a host, not to mention
+the dynamics thereof, rather than allowing the user to readily understand
 and control these aspects of his own service. Also, Facebook
 policy requires identification of the person providing the site,
 while we would prefer to leave this as simply a separate issue.
@@ -366,7 +368,7 @@ are several reasons. First, this allows for a binding of the public
 domain name to the onionsite. As mentioned, .onion addresses are
 inherently not humanly meaningful, which can lead to confusion among 
 end-users.  To get the entirety of a specific domain name of choice is
-technologically infeasible even then, as .onion addresses are
+also technologically infeasible, as .onion addresses are
 randomly-generated alphanumeric strings of 16 digits. The signed-onion
 technique allows someone to choose and retain a desired domain name for the
 site, while still being able to offer an authenticated and integrity
@@ -379,15 +381,15 @@ a self-authenticated onionsite that matched the hijacked site.
 To do this undetectably against the GPG-signed onionsite would require
 subversion of the trust in the GPG key. A con of using GPG signatures
 is that many users of the onionsite may not be familiar with them,
-have appropriate trust in the key, or bother to check. We will address
-these below.
+have appropriate trust in the key, or bother to check the signature
+and the trust in the key. We will address these below.
 
 In addition, many intended users of the site may not have Tor installed.
 Though installation is a simple point-and-click download, many may be
 disinclined against even this small effort. The onionsite would still
 be available via Tor2web, a website that proxies connections from
 non-Tor clients to onionsites~\cite{tor2web}.  To connect to a .onion
-address, one enter a URL such as the following for reaching
+address, one enters a URL such as the following for reaching
 DuckDuckGo's onionsite via Tor2web:
 https://3g2upl4pq6kufc4m.tor2web.org/. The Tor2web site explicitly
 states that ``Tor2web only protects publishers, not readers.'' This is
@@ -425,7 +427,7 @@ content.
 What we have described so far implies a relatively manual
 authentication of PGP/GPG signatures. It would be natural and
 straightforward to create a plugin that verifies the signature
-and provides different indications depending on the trust in it.
+and provides different indications to the user depending on the trust in it.
 There are already related tools. For example, Enigform is a
 Mozilla Firefox extension to support OpenPGP signed HTTP requests.
 And various social trust visualization tools exist.
@@ -435,7 +437,7 @@ endeavors. Perspectives offers an improvement against
 certificate based MitM attacks. But if a site is newly available,
 on our approach
 the onionsite can still be trusted to be bound to the owner of
-the PGP signature. A self-signed certificate, on the other hand,
+the PGP signature. A new self-signed certificate, on the other hand,
 will have little or no
 Perspectives history, and users are reduced to effectively a tofu
 decision. Also, Perspectives notaries largely function as
