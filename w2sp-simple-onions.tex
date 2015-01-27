@@ -203,22 +203,23 @@ like to be assured of is that s/he is reaching DuckDuckGo. Presumably
 the user wants the search results DuckDucGo offers and not what might
 be returned by some other, possibly malicious, server.  In addition to
 the integrity guarantee, the user relies on authentication so that its
-queries are revealed only to DuckDuckGo and not to others. The
-.onion address by itself does not offer this.
-Making use of the traditional web trust infrastructure, DuckDuckGo
-offers a certificate for its .onion address issued by DigiCert.
-Similarly, Facebook offers a DigiCert certificate.
+queries are revealed only to DuckDuckGo and not to others. The .onion
+address by itself does not offer this. Making use of the traditional
+web trust infrastructure, DuckDuckGo and Facebook offer certificates
+for their .onion addresses issued by DigiCert.  This helps ensure that
+users are not misled by onionsites purporting to be official.
 
 Though cryptographic binding is essential to the technical mechanisms
-of trust, users also rely on human-readable familiarity, for example, that
-their browser graphically indicates they have made a certified encrypted
-connection as a result of typing facebook.com into the browser.  To
-some extent, it is at least possible to make use of this in .onion
-space. By generating many keys whose hash had `facebook' as initial
-string and then looking among the full hashes for an adequately
-felicitous result, Facebook was able to obtain facebookcorewwwi.onion
-for its address. Whatever its value for Facebook, this is clearly not
-something that will work widely.
+of trust, users also rely on human-readable familiarity, for example,
+that their browser graphically indicates they have made a certified
+encrypted connection as a result of typing Facebook.com into the
+browser.  To some extent, it is at least possible to make use of this
+in .onion space. By generating many keys whose hash had `Facebook' as
+initial string and then looking among the full hashes for an
+adequately felicitous result, Facebook was able to obtain
+Facebookcorewwwi.onion for its address. Whatever its value for
+Facebook, this is clearly not something that will work widely, as it
+is difficult to generate custom addresses in this way.
 
 Why not just obtain certificates from traditional authorities as
 DuckDuckGo and Facebook have done? For many server operators, getting
@@ -227,8 +228,8 @@ application process can be confusing. It usually costs money. It's
 tricky to install correctly. It's a pain to update. These are not 
 original observations. Indeed that description is actually a quote
 from the blog of
-Let's Encrypt, a new certificate authority dedicated among other
-things to making TLS certification free and automatic~\cite{lets-encrypt}.
+Let's Encrypt, a new certificate authority dedicated, among other
+things, to making TLS certification free and automatic~\cite{lets-encrypt}.
 
 As of this writing, Let's Encrypt is still a few months away
 from offering their services.
@@ -245,26 +246,24 @@ fraudulent certificates for some of the most popular websites.
 
 The EFF's SSL Observatory~\cite{ssl-observatory} is designed to
 monitor for such problems and document their occurrence, while
-Google's Certificate Transparency
-Effort~\cite{certificate-transparency} is a similar but broader
-initiative that adds (amongst other things) append-only signed public
-logs that make certificate shenanigans all the harder to bring off
-undetectably.
+Google's Certificate Transparency Effort~\cite{certificate-
+transparency} is a similar but broader initiative that adds (amongst
+other things) append-only signed public logs that make certificate
+shenanigans all the harder to bring off undetectably.
 
 Rather than simply monitor and make available certificate authority
 problems, the Perspectives Project~\cite{perspectives}, through its
-Firefox extension, strives to
-provide end users with control over the trust they place in website
-certificates. Improving user flexibility
-and control is one of our goals as well. Instead of trusting
-anointed CAs, semi-trusted network notaries probe network services and
-build a record of public keys those services have used over time,
-somewhat similar to the approach of certificate transparency. Users
-can choose which notaries they wish to trust, and clients encountering
-unfamiliar public keys will query notaries for a history of keys used
-by a service~\cite{perspectives-paper}. This is especially intended to
+Firefox extension, strives to provide end users with control over the
+trust they place in website certificates. Improving user flexibility
+and control is one of our goals as well. Instead of trusting anointed
+CAs, semi-trusted network notaries probe network services and build a
+record of public keys those services have used over time, somewhat
+similar to the approach of certificate transparency. Users can choose
+which notaries they wish to trust, and clients encountering unfamiliar
+public keys will query notaries for a history of keys used by a
+service~\cite{perspectives-paper}. This is especially intended to
 enhance trust on first use (tofu) authentication, although it can also
-supplement traditional CA based PKI security. 
+supplement traditional CA based PKI security.
 
 %While Perspectives
 %provides security over time for self-signed certificates, it is still
@@ -536,12 +535,6 @@ fascinating system for other interesting properties and applications.
 \end{document}
 
 
-Furthermore, these are often the sorts of users least able to configure
-and secure 
-
-
-
-
 
 There are a number of problems and limitations with the existing
 web authentication and certification infrastructure, most of which
@@ -551,18 +544,9 @@ improved upon through use of onionsites.
 Unlike TLS, key management is extremely straightforward for .onion
 service operators, and key exchange is handled by the network itself.
 The key size and cipher have rational defaults.  The downside is that
-anyone with the key can impersonate an onion site, as the .onion
+anyone with the key can impersonate an onionsite, as the .onion
 address is inextricably tied to its key.  An adversary who acquires a
 TLS private key cannot impersonate a clearnet website, as the key is
 unrelated to the domain name.
-
-
-<<<<<<< HEAD
-=======
-  An
-additional benefit to this self-authentication is that it provides 
-some protection from missing, blocked, or hijacked DNS servers.
->>>>>>> 2fd6d33bd1a799191e692fe4498d5de8f77a7769
-
 
 
