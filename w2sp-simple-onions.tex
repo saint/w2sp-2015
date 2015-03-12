@@ -537,33 +537,74 @@ fascinating system for other interesting properties and applications.
 \end{document}
 
 
-Ahmia.fi is a search engine that focuses on onion sites with over 2500 services in its database.
+Ahmia.fi is a search engine that focuses on onion sites with over 2500
+services in its database.
 
-Rather than use the clearnet standard robots.txt or meta tags for defining crawling rules and site description, Ahmia has created an alternative proposal that utilizes a description.json file.  By combining these concepts into one easily-parsed file, the proposal allows onionsite operators to ditch descriptive meta tags entirely.
+Rather than use the clearnet standard robots.txt or meta tags for
+defining crawling rules and site description, Ahmia has created an
+alternative proposal that utilizes a description.json file.  By
+combining these concepts into one easily-parsed file, the proposal
+allows onionsite operators to ditch descriptive meta tags entirely.
 
-The authors worked with Ahmia creator Juha Nurmi to incorporate PGP signatures into the description.json schema and into the search engine’s user interface.  
+The authors worked with Ahmia creator Juha Nurmi to incorporate PGP
+signatures into the description.json schema and into the search
+engine’s user interface.
 
 < add figures for these >
 
-As part of the inclusion process, the Ahmia network would automatically verify that the PGP signatures match the defined PGP fingerprint, as well as the signatures across sets of clearnet and onion services (if independently defined).
+As part of the inclusion process, the Ahmia network would
+automatically verify that the PGP signatures match the defined PGP
+fingerprint, as well as the signatures across sets of clearnet and
+onion services (if independently defined).
 
-In this way, even a user who is not proficient in manual fingerprint verification can ensure that a given set of websites is operated by the same party.
+In this way, even a user who is not proficient in manual fingerprint
+verification can ensure that a given set of websites is operated by
+the same party.
 
-Onion.city is another search engine focused on onon sites.  However, because it uses the Google search engine to populate its results, it is not possible to add PGP signature verification functionality to the website.
+Onion.city is another search engine focused on onon sites.  However,
+because it uses the Google search engine to populate its results, it
+is not possible to add PGP signature verification functionality to the
+website.
 
 Ease of setup
 
-Using the existing X.509 system, setting up a certificate can take hours or even days. In cases where the website is operated by a collective or organization, SSL/TLS certificates have been known to take months, due to questions around ownership and authorization.  This time cose is in addition to the cost of the certificate, if any.
+Using the existing X.509 system, setting up a certificate can take
+hours or even days. In cases where the website is operated by a
+collective or organization, SSL/TLS certificates have been known to
+take months, due to questions around ownership and authorization.
+This time cose is in addition to the cost of the certificate, if any.
 
-In contrast, setting up an onion site takes a few minutes and costs nothing.  Even when the process of learning how to create a PGP key and signature is taken into account, the time investment is dramatically less than with the X.509 public key infrastructure.
+In contrast, setting up an onion site takes a few minutes and costs
+nothing.  Even when the process of learning how to create a PGP key
+and signature is taken into account, the time investment is
+dramatically less than with the X.509 public key infrastructure.
 
 
 MITM/Self-Auth
 
-That being said, neither SSL certificates nor PGP verification are required unless website/onionsite authorship is in question.
+That being said, neither SSL certificates nor PGP verification are
+required unless website/onionsite authorship is in question.
 
-Onion sites are, by their nature, self-authenticating.  Because the .onion address is generated based on the private key, and the private key is required to operate the service, it is not possible to impersonate the website or its content using standard methods.  Techniques such as forcing the site to fall back to a non-SSL version [sslstrip] or use a weaker cipher to communicate [beast/freak] are not possible as the address and key are inextricably linked and generated using a strong cipher.
+Onion sites are, by their nature, self-authenticating.  Because the
+.onion address is generated based on the private key, and the private
+key is required to operate the service, it is not possible to
+impersonate the website or its content using standard methods.
+Techniques such as forcing the site to fall back to a non-SSL version
+[sslstrip] or use a weaker cipher to communicate [beast/freak] are not
+possible as the address and key are inextricably linked and generated
+using a strong cipher.
 
-Among clearnet sites, efforts such as HSTS and disabling weak ciphers are in use to minimize the risk of downgrade attacks, but these techniques are far from universal. Of the top 500 websites worldwide, two-thirds support MD5 [https://github.com/glamrock/ciphersuites/blob/master/alexa_ciphers.txt], which has been deprecated since 1996 and known to be susceptible to collisions since 2004 [Dobbertin 96, Sassaman 04, Wang 05, Sotirov 08]. Such sites remain vulnerable to a variety of downgrade attacks.
+Among clearnet sites, efforts such as HSTS and disabling weak ciphers
+are in use to minimize the risk of downgrade attacks, but these
+techniques are far from universal. Of the top 500 websites worldwide,
+two-thirds support MD5 [https://github.com/glamrock/ciphersuites/blob/
+master/alexa_ciphers.txt], which has been deprecated since 1996 and
+known to be susceptible to collisions since 2004 [Dobbertin 96,
+Sassaman 04, Wang 05, Sotirov 08]. Such sites remain vulnerable to a
+variety of downgrade attacks.
 
-The properties of onion sites makes man-in-the-middle attacks impossible without first stealing the private key from the onion site operator -- at which point it is easier for an adversary to simply maintain access to the onion site’s server, rather than attempt a more costly attack that is less likely to succeed.
+The properties of onion sites makes man-in-the-middle attacks
+impossible without first stealing the private key from the onion site
+operator -- at which point it is easier for an adversary to simply
+maintain access to the onion site’s server, rather than attempt a more
+costly attack that is less likely to succeed.
