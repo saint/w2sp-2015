@@ -238,10 +238,9 @@ collective or organization, SSL/TLS certificates have been known to
 take months, due to questions around ownership and authorization.
 This time cost is in addition to the monetary cost of the certificate, if any.
 In contrast, setting up an onionsite takes a few minutes and costs
-nothing. Basically once Tor is installed, which is a simple download
-drag and drop, you just add two lines to your torrc file and you're
-basically done. The Tor Project also provides a brief page with
-additional tips and options~\cite{hs-config}.  Even when the process
+nothing. Once Tor is installed, you simply add two lines to your torrc file 
+and start Tor. The Tor Project also provides a brief page with
+additional tips and advanced options~\cite{hs-config}.  Even when the process
 of learning how to create a PGP key and signature is taken into
 account, the time investment is dramatically less than with the X.509
 public key infrastructure.
@@ -387,14 +386,14 @@ also technologically infeasible, as onion addresses are
 randomly-generated alphanumeric strings of 16 digits. The signed-onion
 technique allows someone to choose and retain a desired domain name for the
 site, while still being able to offer an authenticated and integrity
-protected version easily. This also illustrates one of the pros
+protected version easily. This also illustrates one of the benefits
 of using GPG or similar signatures. If the authentication simply
 showed that the same party that provided the not-secured site
 provided the onionsite, an attacker could set up an altered version,
 employ usual techniques to hijack the not-secure site, and offer
 a self-authenticated onionsite that matched the hijacked site.
 To do this undetectably against the GPG-signed onionsite would require
-subversion of the trust in the GPG key. A con of using GPG signatures
+subversion of the trust in the GPG key. One concern with using GPG signatures
 is that users may not be familiar with them,
 have appropriate trust in the key, or bother to check the signature
 and the trust in the key. We will address these below.
@@ -462,7 +461,7 @@ plugin that uses the PGP trust infrastructure for validation only when
 the browser does not default accept the TLS certificate
 validation~\cite{monkeysphere}.
 
-Our approach natural complements Perspectives and similar
+Our approach naturally complements Perspectives and similar
 endeavors. Perspectives offers an improvement against
 certificate based MitM attacks. But if a site is newly available,
 the onionsite can still be trusted to be bound to the owner of
