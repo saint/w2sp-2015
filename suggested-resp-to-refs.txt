@@ -1,0 +1,231 @@
+
+For convenience in evaluating our revised paper, below please find
+our responses to reviewer comments inline with the comments themselves.
+
+> 
+> 
+> ----------------------- REVIEW 1 ---------------------
+> PAPER: 27
+> TITLE: Genuine onion: Simple, Fast, Flexible, and Cheap Website 
+> Authentication
+> AUTHORS: Paul Syverson and Griffin Boyce
+> 
+> 
+> ----------- REVIEW -----------
+> SUMMARY:
+> The paper proposes to take advantage of the mechanisms used in Tor
+> Hidden Services in order to provide website authentication. They argue
+> that since .onion addresses are self authenticated (being the hash of
+> the public key of the site) they are a fast and convenient tool to
+> check the authenticity of the webs. The authors discuss pros and cons
+> of the approach.
+> 
+> COMMENTS:
+> The idea is interesting and for sure deserves discussion. One question
+> is whether, as the authors already acknowledge, this authentication
+> avoids the need for classic public key certificates signed by
+> authorities. The authors go for GPG, but how would the trust be built?
+> who would sign whose key? how would users decide if they trut the
+> signers. In other words, how is this different from trusting "the
+> sheer number of trusted authorities"?
+
+We have added some text about the difference between trust
+establishment in web of trust and hierarchical trust models and how
+the difference is relevant.  Web of trust is also traditionally used
+with PGP/GPG signatures while hierarchical trust is tradionally used
+with SSL/TLS signatures, but this need not be the case. We also now
+discuss the possibility of using a web of trust with TLS signatures
+via extensions to the Convergence plugin.
+
+> 
+> Another point to consider is that the authors observe that "getting
+> even a basic server certificate is just too much of a hassle. The
+> application process can be confusing. It usually costs money. It’s
+> tricky to install correctly. It’s a pain to update." Is setting up a
+> hidden server and getting the appropriate keys easier for an average
+> web developer or web host?
+
+This is actually a quote from Let's Encrypt, which we noted in the
+text.  We stated it without quotation marks for the rhetorical impact
+from saying something and then only afterwards telling the reader that
+it was not new with us and indeed is a quote.  We have added more
+details about the relative difficulty of setting up an onion service
+vs. getting a traditional X.509 certificate.
+
+> 
+> About the benefit of developing for only one browser. Yes, it is nice,
+> but also Tor Browser is quite limited in functionality. Could this be
+> a problem?
+
+We already had described the functionality limits of the Tor Browser,
+but we have also added more text describing how our approach is
+compatible with other, less secure, browsers via tor2web. We note that
+usability should not suffer and explain how security does.
+
+> 
+> 
+> ----------------------- REVIEW 2 ---------------------
+> PAPER: 27
+> TITLE: Genuine onion: Simple, Fast, Flexible, and Cheap Website 
+> Authentication
+> AUTHORS: Paul Syverson and Griffin Boyce
+> 
+> 
+> ----------- REVIEW -----------
+> The paper suggests using services for of hiding of server network
+> location in order to implement website authentication. I find the
+> topic interesting and relevant to the venue. However, the paper is
+> written more like a magazine article with many facts not supported by
+> references or data.
+> 
+> Suggestions for improvement:
+> - Rewrite the abstract in a more generic way. Currently, it uses names
+> and acronyms that the reader may not be familiar with. The abstract
+> should summarizes the paper and the main outcome of the research.
+
+We have added some text to explain any terms associated with Tor
+(including 'Tor' itself).  All remaining unglossed terms and acronyms
+are generic and basic Internet and Web security terms.
+
+> - Make sure to use references to support the facts like for example:
+> "there have been numerous documented cases of governmental
+> man-in-the-middle attacks through certificate manipulation"
+
+We have added a citation. We originally added more, but because 
+of the hard 4-page length limit we have ultimately included only one.
+
+> - How effective is the proposed approach? Empirical evidence should be 
+> provided.
+
+We're not sure we understand what is being asked here, but we will
+assume it is a request for evidence that it is feasible and relatively
+easy to create an onionsite associated with a clearnet website and
+include a cryptographically authenticated binding of the two
+together. We described in the text setting up an onionsite associated
+with a clearnet website and a GPG signature on both sites associating
+the two, and we provided a functioning example thereof. This
+association is easily confirmed by anyone using GPG.  We have done
+that too. We could display the GPG confirmation message, but since we
+are at the maximum permitted for length this would be at the expense
+of other content. We hope this is responsive to the question.
+
+
+> 
+> 
+> ----------------------- REVIEW 3 ---------------------
+> PAPER: 27
+> TITLE: Genuine onion: Simple, Fast, Flexible, and Cheap Website 
+> Authentication
+> AUTHORS: Paul Syverson and Griffin Boyce
+> 
+> 
+> ----------- REVIEW -----------
+> This paper explores the authentication properties associated with
+> .onion sites. It proposes a method to use PGP signed domain names to
+> enhance these properties, and thus gain a level of assurance that
+> arguably exceeds the current CA system.
+> 
+> The proposed PGP mechanism is quite clunky, especially for end users,
+> but overall the paper is well thought out and exceptionally well
+> written, and should certainly stimulate discussion.
+
+Thank you. And yes the basic manual mechanism is quite clunky. We have
+added a bit about the potential to improve usability with the Firefox
+plugin Convergence and a suggestion to explore incorporating PGP
+signatures into it and/or to incorporate the more web-of-trust-like
+authorization of TLS signatures that could be possible using
+Convergence. We also mention Ahmia's expressed intention to
+include automatic checks of the signatures and linking with search
+results for onionsites and note that a simple plugin could leverage
+that.
+
+> 
+> 
+> ----------------------- REVIEW 4 ---------------------
+> PAPER: 27
+> TITLE: Genuine onion: Simple, Fast, Flexible, and Cheap Website 
+> Authentication
+> AUTHORS: Paul Syverson and Griffin Boyce
+> 
+> 
+> ----------- REVIEW -----------
+> The paper proposes an interesting idea, i.e., the use of .onion system
+> in Tor for website authentication. The paper's major focus is not
+> particularly on what traditional Tor papers concentrate on, e.g.,
+> network location hiding of end-points. Instead, the authors suggest a
+> solution to provide authentication for small and short-lived websites
+> such personal web pages and sites for local one-time events.
+> + I find what the paper proposes exciting that could potentially
+> create an interactive workshop session.
+> - My major concern with the paper is the lack of (even simple)
+> simulation/evaluation of what the authors propose. I understand that
+> this is a position paper but I would like to see a very simple proof
+> of what the authors propose.
+
+We believe this is similar to the question asked in Review 2 above.
+Our response is the same. We provided not just a simulation but an
+example of something running "in the wild". It is so simple, that this
+is trivial to do, which is indeed one of the main points.
+
+> 
+> 
+> ----------------------- REVIEW 5 ---------------------
+> PAPER: 27
+> TITLE: Genuine onion: Simple, Fast, Flexible, and Cheap Website 
+> Authentication
+> AUTHORS: Paul Syverson and Griffin Boyce
+> 
+> 
+> ----------- REVIEW -----------
+> This paper purports using tors hidden services more specifically the
+> onion services to do web site authentication over the more widely used
+> certifications and other methods. The authors state that by using tors
+> onion services they would allow the "average man" to gain access to a
+> secure signed version of their websites at little to no cost. This
+> paper is aimed at describing how the onion services can be set up or
+> rather how the authors believe it can be set up to allow the creation
+> of secure sites (these secure sites can then be tied to unsecured
+> sites that maintain the full domain name through PGP/GPG/X.509
+> signature, reasons for maintaining the unsecured full domain name site
+> is stated in the paper), due to the concentration on simplicity of use
+> of the service (because it is for the "average man") the paper is not
+> very technical in structure. From my standpoint the paper is mostly
+> original with the authors using their viewpoints and layouts (citing
+> proof or evidence where !
+>  needed).
+> This paper offer strong contribution to the area because it offers a
+> new option with which users can create secure web sites with
+> certificates and private keys without needing to pay for or deal with
+> certificate authorities, also stated by the users is how using this
+> method can help mitigate against possible MITM and other attacks due
+> to the complexity that already exist in signatures and the onion
+> services unique auto generated hashes. If I can add on if the authors
+> developed a tool that constantly polled the web and placed known onion
+> sites that corresponded to unsecured sites and made this check able
+> through a public database then they would help limit the amount of
+> phony sites, because all major web browsers could check unsecured
+> onion sites against the known database to validate a signature and a
+> site automatically without user input. 
+
+We have been talking to the developer of Ahmia, the onionspace
+search engine, and he has proposed adding exactly this to Ahmia.
+We now mention this in the text.
+(He plans to add these to the JSON descriptions suggested for each
+onionsite, although there was not space to describe that in the paper
+due to the 4 page hard limit.)
+
+> Example of Firefox extensions
+> that does signature validation was stated in the papers.
+> The major drawback I see with this paper is that onion services are
+> available through the tor browser and other browsers such as chrome
+> requires users to go through the Tor2Web interface this might be the
+> main problem with this method.
+
+The convenience difference between using Tor Browser and using other
+browsers via Tor2Web is small. It could be made nonexistent simply by
+making the posted link to the authenticated version of the site
+reflect the Tor2Web.onion address in addition to or instead of the
+plain .onion address. The security tradeoffs of opening up to all the
+CA issues, plus SSLStrip, cipher degradation attacks, etc. are
+significant enough, however, that it is hard to recommend this.  We
+have added a bit more text about the issue.
