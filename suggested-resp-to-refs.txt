@@ -1,4 +1,3 @@
-
 For convenience in evaluating our revised paper, below please find
 our responses to reviewer comments inline with the comments themselves.
 
@@ -34,7 +33,7 @@ establishment in web of trust and hierarchical trust models and how
 the difference is relevant.  Web of trust is also traditionally used
 with PGP/GPG signatures while hierarchical trust is tradionally used
 with SSL/TLS signatures, but this need not be the case. We also now
-discuss the possibility of using a web of trust with TLS signatures
+mention the possibility of using a web of trust with TLS signatures
 via extensions to the Convergence plugin.
 
 > 
@@ -102,7 +101,7 @@ assume it is a request for evidence that it is feasible and relatively
 easy to create an onionsite associated with a clearnet website and
 include a cryptographically authenticated binding of the two
 together. We described in the text setting up an onionsite associated
-with a clearnet website and a GPG signature on both sites associating
+with a clearnet website and a GPG signature at both sites associating
 the two, and we provided a functioning example thereof. This
 association is easily confirmed by anyone using GPG.  We have done
 that too. We could display the GPG confirmation message, but since we
@@ -136,7 +135,7 @@ signatures into it and/or to incorporate the more web-of-trust-like
 authorization of TLS signatures that could be possible using
 Convergence. We also mention Ahmia's expressed intention to
 include automatic checks of the signatures and linking with search
-results for onionsites and note that a simple plugin could leverage
+results for onionsites, and we note that a simple plugin could leverage
 that.
 
 > 
