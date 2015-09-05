@@ -349,11 +349,10 @@ Certs for .onion addresses is valid only until November 1,
 The future prospects for .onion address certificates are not as
 hopeless as the above might make it seem.  An IETF RFC for registering
 .onion addresses as special use domain names~\cite{ietf-onion-tld-rfc}
-has recently been approved.  With the status of .onion addresses
-appropriately resolved, recent discussions indicate that IANA will
-recommend to the CA/Browser Forum before November 1 that .onion
-addresses should be eligible for SSL Certificates.
-
+has recently been approved by the Internet Engineering Steering Group.
+With the status of .onion addresses appropriately resolved, this should
+clear the way for the CA/Browser Forum to appove eligibility of .onion
+addresses for SSL Certificates by November 1.
 
 %While Perspectives
 %provides security over time for self-signed certificates, it is still
@@ -634,21 +633,21 @@ currently stored in the .onion directory system, but also the TLS
 certificate, onion keys would bind the TLS certificate to the site as
 well as vice versa. 
 
-Assuming Let's Encrypt is successful, and no-additional-cost HTTPS is
-increasingly available from ISPs, we can also envisage incorporation
-of TLS with onionsites for even the ``everyman'' users described
-above. To the extent that this incorporation follows what Facebook has
-done, the strength of trust in the authentication is limited by the
-trust in the TLS certificate. Certificate transparency and the like
-will help here, but the self-authentication of onion addresses can
-also add to this trust, and again in a way more directly under website
-owner control.  It is not just the little guy however. The General
-Services Administration negotiates federal-friendly Terms of Service
-amendments for the rest of the U.S.\ government~\cite{gsa-tos}. As
-of this writing, it is negotiating a federal-friendly amendment
-for the current Let's Encrypt ToS agreement. 
+Assuming Let's Encrypt is successful, we can also envisage
+incorporation of TLS with onionsites for even the ``everyman'' users
+described above.  While certificate transparency and the like will help
+increase trust in authenicating such sites via their certificates,
+the self-authentication of onion addresses can also add to this trust,
+and again in a way more directly under website owner control.  It is
+not just the little guy however. We have already noted some of the
+increasing number of prominent companies that offer onion
+services. Also, the General Services Administration negotiates
+federal-friendly Terms of Service amendments for the rest of the U.S.\
+government~\cite{gsa-tos}. As of this writing, it is negotiating a
+federal-friendly amendment for the current Let's Encrypt ToS
+agreement.
 
-In addition to the PGP-based approach described above,
+In addition to the PGP-based approach given above,
 we now sketch a description of incorporating onion addresses into
 certificates for registered domains. We also describe how to
 incorporate these into a relatively transparent and simple system for
