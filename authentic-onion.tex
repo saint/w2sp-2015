@@ -492,7 +492,7 @@ will describe how to remove this authentication trust dependency on Tor2web.
 
 Finally, traditional search and indexing engines such as Google do not
 generally reflect links to onionsites. The
-search engine, ahmia.fi~\cite{ahmia}, is limited to
+search engine ahmia.fi~\cite{ahmia}, is limited to
 onionsites and known primarily to those
 familiar with them. Ahmia creator Juha Nurmi has, however, agreed to
 incorporate linking of onion and clearnet addresses into
@@ -801,7 +801,7 @@ out and might again be configurable with standard defaults.
 %This would give the website owner direct control
 %over the authentication of the TLS certificate that cannot be bypassed
 %by a simple up-hierarchy certificate hijack.
-
+%\griffin but also, to be fair, the server where an onion site is hosted will have the most critical position, since once a private key is obtained from the server, anyone can impersonate the site, *and* there's no straightforward process to replace it in the absense of a pre-invasion known PGP key that was used to sign the .onion.  I suspect this is way trickier in practice than we give it credit -- it works fantastically if people do it, but people always think that their server is impenetrable.  
 
 
 \section{Conclusion}
