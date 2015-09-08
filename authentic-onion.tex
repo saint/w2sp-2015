@@ -109,7 +109,7 @@ griffin@cryptolab.net}
   provide website authentication, but doing so can be easier, faster,
   cheaper, and more flexible and secure than existing alternatives.
   We illustrate this with two approaches: a general but manual
-  technique based on PGP that can be used right now, an automated
+  technique based on PGP that can be used right now, and an automated
   approach that can be integrated with traditional TLS certificates.
 \end{abstract}
 
@@ -133,15 +133,14 @@ Tor is a widely popular communications infrastructure for anonymous
 communication. Millions use its thousands of relays for unfettered
 traffic-secure access to the Internet. The vast majority of Tor
 traffic by bandwidth (over 96\% at our last check) is on circuits
-connecting Tor clients to servers that are otherwise accessible.  Tor
+connecting Tor clients to servers that are otherwise
+accessible~\cite{hs-stats-report-2015}. Tor
 also provides protocols for connecting to services on the
 pseudo-top-level domain .onion, which are only accessible via Tor.
 In this paper we explore using Tor's .onion infrastructure so that
 individuals operating a website can create authentication, integrity
 and other guarantees more simply, easily, fully, cheaply, and flexibly
 than by other currently available means.
-
-% What's the citation for 96% "otherwise accessible"?
 
 Tor's onionsites have been advocated since their introduction as a
 way to protect network location information for servers not just
@@ -159,7 +158,6 @@ importantly distinct things are often subsumed and run together under
 `Dark Web' as to rob the term of clear significance, other than as a
 caution flag for the hidden incoherence that surrounds
 most occasions of its use.)
-%^ many/most mentions are cautionary tales about the dangers of anonymity, and frequently get the details wrong
 
 Our intent is to challenge the narrowness of this view of
 onionsites. In particular we will discuss security protections they
@@ -216,7 +214,7 @@ lie, not in their location hiding, but in this additional
 authentication and in the greater assurance of improved route security
 offered to their users by requiring a connection via Tor. The
 complexity, latency, and network overhead of the several Tor circuits
-needed to reach Introduction Points and Rendezous Points is not needed
+needed to reach Introduction Points and Rendezvous Points is not needed
 to provide those protections.
 
 Currently deployed onion services are essentially as described above.
@@ -237,7 +235,8 @@ service is advantageous.
 
 \section{Knowing to which self to be true}
 
-Of course the self-authentication described above only binds the
+Of course the self-authentication described above 
+for DuckDuckGo only binds the
 service descriptor information to the 3g2upl4pq6kufc4m.onion
 address. What a user would like to be assured of is that s/he is
 reaching DuckDuckGo. Presumably the user wants the search results
@@ -314,7 +313,7 @@ certificate manipulation, as well as hacking of certificate
 authorities or certificate validation software leading to use of
 fraudulent certificates for some of the most popular
 websites~\cite{forged-ssl-oakland14}.
-%^ also the conscripting of CAs by government authorities, as in the case of China's national CA issuing fake certs coupled with MITM to surveil and likely attack users
+
 
 EFF's SSL Observatory~\cite{ssl-observatory} 
 monitors for such problems and documents their occurrence.
@@ -356,25 +355,8 @@ hopeless as the above might make it seem.  An IETF RFC for registering
 .onion addresses as special use domain names~\cite{ietf-onion-tld-rfc}
 has recently been approved by the Internet Engineering Steering Group.
 With the status of .onion addresses appropriately resolved, this should
-clear the way for the CA/Browser Forum to appove eligibility of .onion
+clear the way for the CA/Browser Forum to approve eligibility of .onion
 addresses for SSL Certificates by November 1.
-
-%While Perspectives
-%provides security over time for self-signed certificates, it is still
-%subject to tofu assumptions and dependent on the setup of an adequate
-%independent notary system.
-
-%\section{Other Considerations for Onion Service Operators}
-
-
-% To create an authenticated hidden service, the operator includes an
-% extra line in their configuration file defining
-% \emph{HiddenServiceAuthorizeClient}
-% 
-%  \emph{HidServAuth onion-address auth-cookie}
-% 
-% 
-
 
 
 \section{Our onions ourselves}
@@ -442,16 +424,24 @@ techniques are already used for signing code. For example,
 the Tor Project offers signatures on all source and binaries
 it makes available for download. 
 
-If the signer wishes to post the signed onion address to a public
-site such as her Facebook page, she can do this also. (An advantage
-of doing so will be discussed below.) Indeed, a
-useful public site for doing this would be an unauthenticated version
-of the same exact service as the one being offered at the onionsite.
-The unauthenticated version and the onionsite version should both
-contain a signed pointer to both versions. It is then
-easy for anyone who desires to check their association.
-For example, we have made an authenticated version of
-http://cupcakebridge.com available at http://eynfqhbaq5yecx6s.onion.
+If the signer wishes to post the signed onion address to a public site
+such as her Facebook page, she can do this also. (An advantage of
+doing so will be discussed below.) Indeed, a useful public site for
+doing this would be an unauthenticated version of the same exact
+service as the one being offered at the onionsite.  The
+unauthenticated version and the onionsite version should both contain
+a signed pointer to both versions. It is then easy for anyone who
+desires to check their association.  For example, we have made an
+authenticated version of http://cryptic.be/about.html available at
+http://swfpqf5iga4stake.onion/about.html.  A natural place to also
+post the association would be to Keybase, which is in beta and
+somewhat similarly motivated ``people
+directory''~\cite{keybase}. Keybase lets one look up via usernames on
+github, reddit, twitter, bitcoin etc.\ identifiers signed with the
+same PGP key. Keybase is, incidentally, another commercial site with
+an onion address (http://fncuwbiisyh6ak3i.onion/) for its
+registered-domain address (https://keybase.io/), although at last
+check they have not recursively listed this itself within Keybase.
 
 Why even bother with the non-onionsite version? There are several
 reasons. First, this allows for a binding of the public domain name to
@@ -496,7 +486,7 @@ will describe how to remove this authentication trust dependency on Tor2web.
 
 Finally, traditional search and indexing engines such as Google do not
 generally reflect links to onionsites. The
-search engine ahmia.fi~\cite{ahmia}, is limited to
+search engine ahmia.fi~\cite{ahmia} is limited to
 onionsites and known primarily to those
 familiar with them. Ahmia creator Juha Nurmi has, however, agreed to
 incorporate linking of onion and clearnet addresses into
@@ -506,12 +496,7 @@ automatically test the signatures and check the clearnet and onion
 sites. Thus, a user who trusts Ahmia (and her connection to Ahmia)
 on this can verify that a pair of
 websites is operated by the same party, even if personally inexpert
-with manual PGP verification.
-%Onion.city is another onionspace
-%search engine.  It uses Google via Tor2web to populate search
-%results. Adding PGP signature verification functionality
-%to onion.city is thus unlikely.  
-Crawling and indexing of
+with manual PGP verification. Crawling and indexing of
 onionsites is also in its infancy and can thus not be expected to be
 as appropriately representative as the much more mature indexing of
 the surface web by Google and similar sites.
@@ -613,16 +598,6 @@ simply judgment about authentication, which is our focus.
 \section{Let's Authenticate}
 \label{lets-auth}
 
-%Alternatively something like Convergence could integrate the
-%advantages from onionsite self-authentication that our approach
-%provides with the TLS signatures familiar to existing web
-%browsers. But it would not need to rely on existing CAs, which is
-%indeed a primary goal of Convergence. This seems a promising
-%direction, although not as immediately usable as the manual check
-%we describe. It requires both a web of trust for TLS
-%signature keys and integration with onionsites to adequately develop.
-%^ I feel like Convergence is not useful in this context.  Since it's never made it out of the theoretical phase, broad adoption seems unlikely.
-
 Unlike conventional web URLs, onion addresses are inextricably
 connected to the site authentication key. This means that if one has
 publicized the onion address, e.g., through blogs, Twitter, or
@@ -642,7 +617,7 @@ well as vice versa.
 Assuming Let's Encrypt is successful, we can also envisage
 incorporation of TLS with onionsites for even the ``everyman'' users
 described above.  While certificate transparency and the like will help
-increase trust in authenicating such sites via their certificates,
+increase trust in authenticating such sites via their certificates,
 the self-authentication of onion addresses can also add to this trust,
 and again in a way more directly under website owner control.  It is
 not just the little guy however. We have already noted some of the
@@ -666,7 +641,7 @@ as a SAN (subjectAltName) in the certificate issued for the registered
 domain name.  At least the same DV level of checking should occur as
 is currently done when issuing certificates registered domain
 names. The email check should include the onion name that is being
-bound as well as the registered damain name.  (For simplicity, we
+bound as well as the registered domain name.  (For simplicity, we
 assume a single onion address and a single registered domain name,
 although doing this for a small number of registered domains and a
 similarly small number of onion addresses might be made to work as
@@ -744,7 +719,7 @@ This means that no attacks on DNS resolution or even observations
 of DNS lookups exiting the Tor network can affect such connections.
 
 As mentioned above, by using Tor2web one need not rely on Tor Browser
-to access onionsites. A configuration choice at time of oniosite
+to access onionsites. A configuration choice at time of onionsite
 certification could add a detect-browser-and-use-tor2web-if-needed
 option to the default HTTPS Everywhere ruleset. Then users of other
 browsers that support HTTPS Everywhere could obtain the added
@@ -759,7 +734,7 @@ addresses and binding to known domain names by a Let's Encrypt
 Certificate.  A redirection to a different onion address by tor2web
 that went unnoticed would permit a successful connection, but this
 should fail an authentication check of the certificate of the
-requested cite.
+requested site.
 
 \noindent{\bf An Onion of Trust}
 
@@ -773,20 +748,22 @@ verification.  This would allow not just securing of human-meaningful
 addresses and connections but also certification by more
 human-meaningful trust relations than the usual CA.  This is also
 something that requires no new software to be created in order to do
-right now. Indeed, there are registered-domain (non-nion) sites with
+right now. Indeed, there are registered-domain (non-onion) sites with
 PGP signed certs for such purpose right now, e.g., \url{psg.com}.
-
 Further, this allows things like binding a wordpress blog to an onion
 address as mentioned above, so people need not have a registered domain
 to have a human-meaningful address for a site for which
 they would like to offer a route-secure alternative.
 
 As noted there is no simple automated significant infrastructure to
-support this, however. The Monkeysphere plugin does provid support but
-has not seen wide adoption.  A primary reason is that PGP remains
+support this, however. The Monkeysphere plugin does provide support
+but has not seen wide adoption.  A primary reason is that PGP remains
 something of a geek tool. That is possibly changing slowly, but in any
 case a plugin like Monkeysphere assumes people have PGP keys and a
-trust network rather than facilitating creation of one.
+trust network rather than facilitating creation of one. Keybase, which
+is just getting started, may help change this as well since it
+uses existing social network identities and ties these to each
+other via PGP keys.
 
 If .onion keys could be themselves linked in a PGP-like web of trust,
 then this could be more directly relevant and meaningful to people
@@ -798,15 +775,10 @@ understand criteria for people deciding when to sign another's key, as
 well as mechanisms for that to all happen securely. This holds more
 hope for a successful widespread web of trust to complement the X.509
 type trust hierarchy than the PGP approach of section~\ref{ourselves}
-would support. How to decide whether a site is trusted depending what
-each of these trust mechanisms indicate would also need to be worked
+would support. How to decide whether a site is trusted (depending what
+each of these trust mechanisms indicate) would also need to be worked
 out and might again be configurable with standard defaults.
 
-
-%This would give the website owner direct control
-%over the authentication of the TLS certificate that cannot be bypassed
-%by a simple up-hierarchy certificate hijack.
-%\griffin but also, to be fair, the server where an onion site is hosted will have the most critical position, since once a private key is obtained from the server, anyone can impersonate the site, *and* there's no straightforward process to replace it in the absense of a pre-invasion known PGP key that was used to sign the .onion.  I suspect this is way trickier in practice than we give it credit -- it works fantastically if people do it, but people always think that their server is impenetrable.  
 
 
 \section{Conclusion}
@@ -819,7 +791,7 @@ authentication with security advantages not provided by existing
 approaches. We have described two approaches to this: One, based on
 PGP, is feasible for immediate albeit manual use and works generally
 to provide authentication for any human meaningful site. The other
-will work for onionsties associated with registered domains and has
+will work for onionsites associated with registered domains and has
 the potential for simple setup and use in conjunction with the Let's
 Encrypt infrastructure.  We also hope our expanded view of the
 possibilities created by Tor's onion services will encourage others to
@@ -859,80 +831,3 @@ Muffett, Mike Perry, and Seth Schoen.
 %\input{sections/appendix}
 
 \end{document}
-
-
-Ahmia.fi is a search engine that focuses on onion sites with over 2500
-services in its database.
-
-Rather than use the clearnet standard robots.txt or meta tags for
-defining crawling rules and site description, Ahmia has created an
-alternative proposal that utilizes a description.json file.  By
-combining these concepts into one easily-parsed file, the proposal
-allows onionsite operators to ditch descriptive meta tags entirely.
-
-The authors worked with Ahmia creator Juha Nurmi to incorporate PGP
-signatures into the description.json schema and into the search
-engine’s user interface.
-
-< add figures for these >
-
-As part of the inclusion process, the Ahmia network would
-automatically verify that the PGP signatures match the defined PGP
-fingerprint, as well as the signatures across sets of clearnet and
-onion services (if independently defined).
-
-In this way, even a user who is not proficient in manual fingerprint
-verification can ensure that a given set of websites is operated by
-the same party.
-
-Onion.city is another search engine focused on onion sites.  However,
-because it uses the Google search engine to populate its results, it
-is not possible to add PGP signature verification functionality to the
-website.
-
-Ease of setup
-
-Using the existing X.509 system, setting up a certificate can take
-hours or even days. Where the website is operated by a
-collective or organization, SSL/TLS certificates have been known to
-take months, due to questions around ownership and authorization.
-This time cost is in addition to the cost of the certificate, if any.
-
-In contrast, setting up an onionsite takes a few minutes and costs
-nothing. Basically once Tor is installed, which is a simple download
-drag and drop, you just add two lines to your torrc file and you're
-basically done. The Tor Project also provides a brief page with
-additional tips and options~\cite{hs-config}.  Even when the process
-of learning how to create a PGP key and signature is taken into
-account, the time investment is dramatically less than with the X.509
-public key infrastructure.
-
-
-MITM/Self-Auth
-
-That being said, neither SSL certificates nor PGP verification are
-required unless website/onionsite authorship is in question.
-
-Onion sites are, by their nature, self-authenticating.  Because the
-.onion address is generated based on the private key, and the private
-key is required to operate the service, it is not possible to
-impersonate the website or its content using standard methods.
-Techniques such as forcing the site to fall back to a non-SSL version
-[sslstrip] or use a weaker cipher to communicate [beast/freak] are not
-possible as the address and key are inextricably linked and generated
-using a strong cipher.
-
-Among clearnet sites, efforts such as HSTS and disabling weak ciphers
-are in use to minimize the risk of downgrade attacks, but these
-techniques are far from universal. Of the top 500 websites worldwide,
-two-thirds support MD5 [https://github.com/glamrock/ciphersuites/blob/
-master/alexa_ciphers.txt], which has been deprecated since 1996 and
-known to be susceptible to collisions since 2004 [Dobbertin 96,
-Sassaman 04, Wang 05, Sotirov 08]. Such sites remain vulnerable to a
-variety of downgrade attacks.
-
-The properties of onion sites makes man-in-the-middle attacks
-impossible without first stealing the private key from the onion site
-operator -- at which point it is easier for an adversary to simply
-maintain access to the onion site’s server, rather than attempt a more
-costly attack that is less likely to succeed.
