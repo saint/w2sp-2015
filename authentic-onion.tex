@@ -159,8 +159,7 @@ importantly distinct things are often subsumed and run together under
 `Dark Web' as to rob the term of clear significance, other than as a
 caution flag for the hidden incoherence that surrounds
 most occasions of its use.)
-%^ rephrase
-% many/most mentions are cautionary tales about the dangers of anonymity, and frequently get the details wrong
+%^ many/most mentions are cautionary tales about the dangers of anonymity, and frequently get the details wrong
 
 Our intent is to challenge the narrowness of this view of
 onionsites. In particular we will discuss security protections they
@@ -173,14 +172,13 @@ security properties they offer.
 \section{Brief background on Tor and onion services}
 
 We sketch out minimal basics of Tor onion services. For more detailed
-descriptions see the Tor design paper or other documentation at the
+descriptions see the Tor design paper~\cite{tor-design} and related documentation at the
 Tor website~\cite{torproject}. For a high-level graphical description
 of onion services see~\cite{tor-hs}. For a more up to date, and much
 more technical, description of onion services protocols see the Tor
 Rendezvous Specification~\cite{tor-rend-spec}.
-%^ cite tor design paper and website independently?
 
-Tor clients randomly select three of the roughly 6500 relays
+Tor clients randomly select three of the roughly 6500 relays~\cite{tor-network-size}
 comprising the current Tor network, and create a cryptographic circuit
 through these to connect to Internet services. Since only the first
 relay in the circuit sees the IP address of the client and
@@ -195,7 +193,6 @@ onionsite then both create Tor circuits to a client-selected
 \emph{Rendezvous Point}. The Rendezvous Point mates their circuits
 together, and they can then interact as ordinary client and server of
 a web connection over this rendezvous circuit.
-%^ 6500+ relays https://metrics.torproject.org/networksize.html
 
 Since the onionsite only communicates over Tor circuits it creates,
 this protocol hides its network location, the feature that
@@ -210,6 +207,7 @@ circuit for DNS resolution at the exit. The public key
 corresponds to the key that signs the list of Introduction Points
 and other service descriptor information provided by the directory
 system. In this way, onion addresses are self-authenticating.
+%the original announcement for the .onion is a dead link, so no reference
 
 \noindent{\bf Hold the extra onions, Make mine a single}
 
@@ -236,7 +234,6 @@ people administering systems behind restrictive firewalls that only
 permit outbound connections currently use onion services to administer
 their systems. There are, however, settings where using a single-onion
 service is advantageous.
-%^ possibly streamline mention of Tor proposals
 
 \section{Knowing to which self to be true}
 
@@ -624,6 +621,7 @@ simply judgment about authentication, which is our focus.
 %direction, although not as immediately usable as the manual check
 %we describe. It requires both a web of trust for TLS
 %signature keys and integration with onionsites to adequately develop.
+%^ I feel like Convergence is not useful in this context.  Since it's never made it out of the theoretical phase, broad adoption seems unlikely.
 
 Unlike conventional web URLs, onion addresses are inextricably
 connected to the site authentication key. This means that if one has
