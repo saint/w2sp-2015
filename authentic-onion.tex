@@ -52,6 +52,8 @@
 %\SetWatermarkScale{.2}
 %\SetWatermarkColor[rgb]{0.7,0.7,0.7}
 
+\pagestyle{plain}
+
 % custom commands
 \newcommand{\etal}{{\em et al.}}
 \newcommand{\naive}{na\"{\i}ve }
@@ -435,7 +437,7 @@ desires to check their association.  For example, we have made an
 authenticated version of http://cryptic.be/about.html available at
 http://swfpqf5iga4stake.onion/about.html.  A natural place to also
 post the association would be to Keybase, which is in beta and
-somewhat similarly motivated ``people
+a somewhat similarly motivated ``people
 directory''~\cite{keybase}. Keybase lets one look up via usernames on
 github, reddit, twitter, bitcoin etc.\ identifiers signed with the
 same PGP key. Keybase is, incidentally, another commercial site with
@@ -693,7 +695,7 @@ Assuming an onionsite has been configured and certificate issued for
 it, how should a client connect to the onionsite? If connection
 to the onion address has been requested, e.g., by the user
 clicking on a link to that address, then the connection should
-proceed as normal and browser should display appropriately for a
+proceed as normal and the browser should display appropriately for a
 DV certified destination. But a client may request a connection
 to the registered-domain address associated in the certificate
 and be automatically redirected to the onionsite as a security
@@ -724,22 +726,22 @@ certification could add a detect-browser-and-use-tor2web-if-needed
 option to the default HTTPS Everywhere ruleset. Then users of other
 browsers that support HTTPS Everywhere could obtain the added
 authentication provided by an onionsite version of a registered
-domain. Whether or not to use onionsite rules could, nonetheless, also
-be a simple general settings choice for the HTTPS Everywhere client as
-well.
+domain. Whether or not to use rules that redirect to onionsites
+could, nonetheless, also be a simple general settings choice for the
+HTTPS Everywhere client as well.
 
 Note that authentication even for a client using Tor2web is much
 stronger because of the combined use of self-authenticating onion
 addresses and binding to known domain names by a Let's Encrypt
-Certificate.  A redirection to a different onion address by tor2web
+Certificate.  A redirection to a different onion address by Tor2web
 that went unnoticed would permit a successful connection, but this
 should fail an authentication check of the certificate of the
 requested site.
 
 \noindent{\bf An Onion of Trust}
 
-We had suggested above that people could bind their public site to
-their onion address with a GPG key.  We finish with a similar alternative
+We had suggested above that people could bind their public sites to
+their onion addresses with a GPG key.  We finish with a similar alternative
 that makes different trade-offs.
 
 One motivation for using PGP keys is that there is an existing web of
@@ -749,7 +751,7 @@ addresses and connections but also certification by more
 human-meaningful trust relations than the usual CA.  This is also
 something that requires no new software to be created in order to do
 right now. Indeed, there are registered-domain (non-onion) sites with
-PGP signed certs for such purpose right now, e.g., \url{psg.com}.
+PGP signed certs for such purpose right now, e.g., psg.com.
 Further, this allows things like binding a wordpress blog to an onion
 address as mentioned above, so people need not have a registered domain
 to have a human-meaningful address for a site for which
@@ -790,22 +792,21 @@ services offer users, a simple, effective, cheap and flexible means of
 authentication with security advantages not provided by existing
 approaches. We have described two approaches to this: One, based on
 PGP, is feasible for immediate albeit manual use and works generally
-to provide authentication for any human meaningful site. The other
-will work for onionsites associated with registered domains and has
-the potential for simple setup and use in conjunction with the Let's
-Encrypt infrastructure.  We also hope our expanded view of the
+to provide authentication for any human meaningful site identifier. 
+The other will work for onionsites associated with registered domains
+and has the potential for simple setup and use in conjunction with the
+Let's Encrypt infrastructure.  We also hope our expanded view of the
 possibilities created by Tor's onion services will encourage others to
 explore this fascinating system for other interesting properties and
 applications.
 
 
-
 \point{Acknowledgments}
 % \section*{Acknowledgments}
-We thank the anonymous reviewers for their feedback and suggestions.
-We have also benefited from conversations with many people including
-Richard Barnes, Roger Dingledine, Peter Eckersley, Eric Mill, Alec
-Muffett, Mike Perry, and Seth Schoen.
+We thank the anonymous reviewers of an earlier version for their
+feedback and suggestions.  We have also benefited from conversations
+with many people including Richard Barnes, Roger Dingledine, Peter
+Eckersley, Eric Mill, Alec Muffett, Mike Perry, and Seth Schoen.
 
 % Thank Roger, Peter, Seth, Mike, Eric Mill, Richard Barnes who else?
 
