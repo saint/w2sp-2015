@@ -446,14 +446,16 @@ services is as a personal RSS reader, as onionsites ensure some level
 of feed integrity (particularly important when fetching news feeds
 that do not utilize TLS).
 
-Of course one can always create a Facebook page or something similar
+One can always create a Facebook page or something similar
 that is protected by HTTPS and TLS certificates,
 and this is often done.  But this makes the service dependent on the
 reputation, trust, policies, and protections of such a host, not to mention
 the dynamics thereof, rather than allowing the user to readily understand
-and control these aspects of his own service. Also, Facebook
-policy requires identification of the person providing the site,
-while we would prefer to leave this as simply a separate issue.
+and control these aspects of his own service. Facebook and other services 
+have the final dominion over content hosted on their servers and may have 
+a different legal jurisdiction from the user. In addition, Facebook
+policy requires identification of the person providing the page,
+while we would prefer to leave this disclosure at the discretion of the onion service operator.
 
 A very simple way to add binding of the onionsite public key to
 a known entity using widely available mechanisms is to provide a
@@ -480,7 +482,7 @@ http://glennsorrentino.com/onion-binding.php and
 http://at3o24mj2rfabkca.onion/onion-binding.php Glenn Sorrentino binds
 the addresses of the insecure and authenticated versions of his site.
 
-A natural place to also post the association would be to Keybase,
+Another natural place to post the association would be to Keybase,
 which is in beta and a somewhat similarly motivated ``people
 directory''~\cite{keybase}. Keybase lets one look up via usernames on
 github, reddit, twitter, bitcoin etc.\ identifiers signed with the
@@ -489,7 +491,8 @@ an onion address (http://fncuwbiisyh6ak3i.onion/) for its
 registered-domain address (https://keybase.io/), although at last
 check they have not recursively listed this itself within Keybase.
 
-Why even bother with the non-onionsite version? There are several
+Given the authentication benefits onionsites provide, why even bother 
+with the non-onionsite version? There are several
 reasons. First, this allows for a binding of the public domain name to
 the onionsite. As mentioned, onion addresses are inherently not
 humanly meaningful, which can lead to confusion among end-users.  To
@@ -511,17 +514,17 @@ with them, have appropriate trust in the key, or bother to check the
 signature and the trust in the key. We will address these below.
 
 In addition, intended users of the site may not have Tor
-installed.  Though installation is a simple point-and-click download,
-some may be disinclined against even this small effort. The onionsite
+installed.  Though installation is a simple point-click-run download,
+some may perceive this process as being difficult or may have 
+network restrictions that make using Tor more difficult. The onionsite
 would still be available via Tor2web, a website that proxies
 connections from non-Tor clients to onionsites~\cite{tor2web}.
 Whatever availability such proxying services provide, they inherently
 operate as at best an overtly acknowledged man-in-the-middle on
 coonections to onionsites.  Since we are focused on not merely
-maintaining but improving
-authentication in this paper, we will say no more about such
-possibilities. We thus limit ourselves to the millions of
-current Tor users and those who become users.
+maintaining but improving authentication in this paper, we will 
+say no more about such possibilities. We thus limit ourselves to the 
+millions of current Tor users and those who become users.
 
 %To connect to an onionsite, one enters a URL such as the following for
 %reaching DuckDuckGo's onionsite via Tor2web:
@@ -593,7 +596,6 @@ inexpert with manual PGP verification. Crawling and indexing of
 onionsites is also in its infancy and can thus not be expected to be
 as appropriately representative as the much more mature indexing of
 the surface web by Google and similar sites.
-
 
 \section{Usability, Convenience, and Security}
 
@@ -829,7 +831,8 @@ also includes the SSL Observatory mentioned above.
 
 If HTTPS Everywhere redirects to an onionsite, normal browser
 behavior will be to display the onion address. One could rewrite
-the brwoser logic, but this is 
+the browser logic to display the domain name, but this is not necessary
+when the two sites are tied together in a clear manner.   
 
 Another advantage of relying on HTTPS Everywhere is that there will
 be no DNS lookup of IP address associated with the domain name.
