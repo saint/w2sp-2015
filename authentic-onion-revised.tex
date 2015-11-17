@@ -91,7 +91,7 @@
 paul.syverson@nrl.navy.mil}
 \and
 \IEEEauthorblockN{Griffin Boyce}
-\IEEEauthorblockA{Berkman Center for Internet and Society at Harvard University\\
+\IEEEauthorblockA{Berkman Center for Internet and Society\\
 griffin@cryptolab.net}
 }
 
@@ -137,7 +137,7 @@ communication. Millions use its thousands of relays for unfettered
 traffic-secure access to the Internet. The vast majority of Tor
 traffic by bandwidth (over 96\% at our last check) is on circuits
 connecting Tor clients to servers that are otherwise
-accessible~\cite{hs-stats-report-2015}. Tor
+accessible on the Internet~\cite{hs-stats-report-2015}. Tor
 also provides protocols for connecting to services on the
 special-use top level domain .onion, which are only accessible via Tor.
 In this paper we explore using Tor's .onion infrastructure so that
@@ -159,7 +159,7 @@ them. Indeed, these are generally referred to collectively as
 \emph{Dark Web} in the popular press. (Although so many importantly
 distinct things are often subsumed and run together under `Dark Web'
 as to rob the term of clear significance, other than as a caution flag
-for the hidden incoherence that surrounds most occasions of its
+for the incoherence that surrounds most occasions of its
 use. Ironically, spies and criminals attack users from hiding spots
 throughout the infrastructure on today's Internet, while Tor's
 authenticated routing overlay is often the only direct control and
@@ -209,7 +209,7 @@ of onion services see~\cite{tor-hs}. For a more up to date, and much
 more technical, description of onion services protocols see the Tor
 Rendezvous Specification~\cite{tor-rend-spec}.
 
-Tor clients randomly select three of the roughly 6500 relays~\cite{tor-network-size}
+Tor clients randomly select three of the more than 6700 relays~\cite{tor-network-size}
 comprising the current Tor network, and create a cryptographic circuit
 through these to connect to Internet services. Since only the first
 relay in the circuit sees the IP address of the client and
