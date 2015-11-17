@@ -226,7 +226,7 @@ onionsite then both create Tor circuits to a client-selected
 together, and they can then interact as ordinary client and server of
 a web connection over this rendezvous circuit.
 
-Since the onionsite only communicates over Tor circuits it creates,
+Since a properly-configured onionsite only communicates over Tor circuits it creates,
 this protocol hides its network location, the feature that
 gives it the name `hidden service'. But, there are other important
 features to the .onion system, notably self-authentication. The onion
@@ -316,7 +316,10 @@ tricky to install correctly. It's a pain to update.
 These are not original observations. Indeed that description is
 actually a quote from the blog of Let's Encrypt, a new certificate
 authority dedicated, among other things, to making TLS certification
-free and automatic~\cite{lets-encrypt}.
+free and automatic for most websites~\cite{lets-encrypt}. As of this 
+writing, Let's Encrypt services do not provide certificates for
+onionsites. 
+\griffin I decided to leave this section in but change it slightly
 
 Using the existing X.509 system, setting up a certificate can take
 hours or even days. In cases where the website is operated by a
@@ -357,22 +360,9 @@ adding (amongst other things) append-only signed public
 logs that make certificate shenanigans all the harder to bring off
 undetectably.
 
-%Rather than simply monitor and flag certificate authority
-%problems, the Perspectives Project~\cite{perspectives} strives to
-%provide end users with control over the trust they place in website
-%certificates. Instead of trusting anointed CAs, semi-trusted network
-%notaries probe network services and build a record of public keys
-%those services have used over time, somewhat similar to the approach
-%of certificate transparency. Users can choose which notaries they wish
-%to trust, and clients encountering unfamiliar public keys will query
-%notaries for a history of keys used by a
-%service~\cite{perspectives-paper}. This is especially intended to
-%enhance trust on first use (tofu) authentication, although it can also
-%supplement traditional CA based PKI security. 
-
 The problems with certificates raised above and below, though real,
 are largely moot at the moment for most of those who might wish
-to offer onion services. As of this writing,
+to create onion services. As of this writing,
 the CA/Browser Forum has approved only EV (Extended Validation)
 Certificates for .onion addresses. This limits their use to those with
 the significant amount of time, money, and desire to follow the
@@ -383,7 +373,7 @@ certificates for their sites are Domain Validation (DV) Certs. These
 typically require a simple email confirmation based on information in
 the WHOIS database.  
 
-Further, the .onion domain itself was without official status until
+Further, the .onion top-level domain itself was without official status until
 recently, which is part of why the approval to issue EV Certs was initially
 temporary. An IETF RFC reserving .onion as one of the handful of
 special-use domain names was, however, approved in October 2015 as a
