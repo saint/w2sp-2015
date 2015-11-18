@@ -109,11 +109,12 @@ griffin@cryptolab.net}
   system can be used to provide an entirely separate benefit: basic
   website authentication. We also argue that not only can onionsites
   provide website authentication, but doing so can be easier, faster,
-  cheaper, more flexible \emph{and more secure} than existing alternatives.
-  We illustrate this with a general manual technique based on PGP
-  that can be used right now, and we discuss the challenges to
-  creating an automated approach that can be integrated with
-  traditional TLS certificates.
+  cheaper, more flexible \emph{and more secure} than existing
+  alternatives.  We illustrate this with a general manual technique
+  based on PGP that can be used right now. We also set out an
+  automated approach that can be integrated with traditional TLS
+  certificates and argue for changes to the current regulatory
+  limitations on certificates for .onion addresses.
 \end{abstract}
 
 % \input{sections/abstract}
@@ -135,11 +136,11 @@ griffin@cryptolab.net}
 Tor is a widely popular communications infrastructure for anonymous
 communication. Millions use its thousands of relays for unfettered
 traffic-secure access to the Internet. The vast majority of Tor
-traffic by bandwidth (over 96\% at our last check) is on circuits
+traffic by bandwidth (about 95\% at our last check) is on circuits
 connecting Tor clients to servers that are otherwise
 accessible~\cite{hs-stats-report-2015}. Tor
 also provides protocols for connecting to services on the
-special-use top level domain .onion, which are only accessible via Tor.
+reserved top level domain .onion, which are only accessible via Tor.
 In this paper we explore using Tor's .onion infrastructure so that
 individuals operating a website can create authentication, integrity
 and other guarantees more simply, easily, fully, cheaply, and flexibly
@@ -160,8 +161,8 @@ them. Indeed, these are generally referred to collectively as
 distinct things are often subsumed and run together under `Dark Web'
 as to rob the term of clear significance, other than as a caution flag
 for the hidden incoherence that surrounds most occasions of its
-use. Ironically, spies and criminals attack users from hiding spots
-throughout the infrastructure on today's Internet, while Tor's
+use. Ironically, as spies and criminals attack users from hiding spots
+throughout the infrastructure on today's Internet, Tor's
 authenticated routing overlay is often the only direct control and
 only illumination users have of where their traffic goes.)
 
@@ -179,7 +180,7 @@ After giving a brief overview of Tor and onion services, we will
 describe a limitation on the self-authentication they provide: onion
 addresses are not human-meaningful. Certificates for meaningful
 registered domains have problems as well, however, many of which are
-particularly disadvantageous operators of smaller, less global, or
+particularly disadvantageous to operators of smaller, less global, or
 less permanent websites.  We next describe some of the concerns for
 such sites and propose a solution based on PGP signatures that
 combines the usable meaningfulness of registered domain names with the
@@ -194,7 +195,7 @@ sensible.
 
 We will illustrate our points throughout using three running examples
 of current sites that are available both as ordinary registered-domain
-sites and as onion services. Facebook is a large company that
+websites and as onionsites. Facebook is a large company that
 possesses a strong form of cert tied to both its onion address and its
 registered-domain. DuckDuckGo is a company and site that offers an
 onion address and has a cert, but only for its registered domain name,
@@ -288,7 +289,7 @@ of trust, users also rely on human-readable familiarity, for example,
 that the browser graphically indicates s/he has made a certified
 encrypted connection as a result of typing facebook.com into the
 browser.  To some extent, it is at least possible to make use of this
-in .onion space. By generating many keys whose hash had `facebook' as
+in onionspace. By generating many keys whose hash had `facebook' as
 initial string and then looking among the full hashes for an
 adequately felicitous result, Facebook was able to obtain
 facebookcorewwwi.onion for its address. Whatever its value for
@@ -389,8 +390,8 @@ temporary. An IETF RFC reserving .onion as one of the handful of
 special-use domain names was, however, approved in October 2015 as a
 proposed standard~\cite{ietf-onion-tld-rfc}.  With the official
 release of this RFC, the approval of certs for .onion addresses is now
-on firmer footing~\cite{7686-and-all}. We will return to this
-in Section~\ref{lets-auth}.
+on firmer footing~\cite{7686-and-all}. 
+% We will return to this in Section~\ref{lets-auth}.
 
 
 \section{Our onions ourselves}
@@ -420,22 +421,22 @@ provider or only available for an additional fee.
 
 Website owners may also wish to simply make sure their sites are
 available to Tor users. With a growing userbase already in the
-millions this is understandable.  Some sites, such as Facebook, use an
+millions, this is understandable.  Some sites, such as Facebook, use an
 onion service to provide better performance, security, and user
 experience for Tor users than they are able to offer simply having
 those users connect to their site over a simple Tor circuit connecting
-to facebook.com~\cite{7686-and-all}. On the other hand, those with
-small personal sites may discover that access to it is blocked by
+to facebook.com~\cite{7686-and-all}. On the other hand, those with a
+small personal site may discover that access to it is blocked by
 their hosting provider.  Thus, when Glenn Sorrentino, a product
 designer, realized this was true of his site glennsorrentino.com, he
 set up a version of that site on a small personal system at
 at3o24mj2rfabkca.onion. This provides other benefits as well, but his
 motivation was to allow reachability via Tor. (Since the Tor network
 is designed to be reached even by users experiencing censorship,
-another way to solve this same problem that may make sense for other
-site owners would be to run the site as an onion service from the same
-webserver, but where the onion server connects to Tor via bridges and
-obfuscating pluggable transports~\cite{bridges}.)
+another possible way to solve this same problem would be to run the
+site as an onion service from the same web server but
+connecting to Tor via bridges and obfuscating pluggable
+transports~\cite{bridges}.)
 
 We are primarily focused on improvements to authentication using
 onionsites and thus mostly leave properties of network location hiding
@@ -468,8 +469,7 @@ while we would prefer to leave this as simply a separate issue.
 A very simple way to add binding of the onionsite public key to
 a known entity using widely available mechanisms is to provide a
 signature on the onion address. We envision a PGP/GPG signature, but
-it could be an X.509 signature (or other as we discuss below). 
-The signed text can simply be
+it could be an X.509 signature. The signed text can simply be
 included on the onionsite, making it self-authenticating in this sense
 as well. The trust in the authentication will then be whatever trust
 is associated with the public key that does the signing. Such
@@ -527,7 +527,7 @@ would still be available via Tor2web, a website that proxies
 connections from non-Tor clients to onionsites~\cite{tor2web}.
 Whatever availability such proxying services provide, they inherently
 operate as at best an overtly acknowledged man-in-the-middle on
-coonections to onionsites.  Since we are focused on not merely
+connections to onionsites.  Since we are focused on not merely
 maintaining but improving
 authentication in this paper, we will say no more about such
 possibilities. We thus limit ourselves to the millions of
@@ -707,12 +707,13 @@ connected to the site authentication key. This means that if one has
 publicized the onion address, e.g., through blogs, Twitter, or
 Facebook, people following those address links will not be vulnerable
 to hijack or MitM by the subverted CA the way they would be by a link
-to a regular URL\@. This significantly raises the bar on the hijacker
+to a registered-domain URL\@. 
+This significantly raises the bar on the hijacker
 fairly automatically and easily. Further, non-CA-based MitM techniques
 such as forcing the site to fall back to a non-SSL version (e.g.,
 SSLStrip) or to use a weaker cipher to communicate (e.g, BEAST and
 FREAK) are also not possible as the address and key are inextricably
-linked and generated using a strong cipher. And, if onionsite private
+linked and generated cryptographically. And, if onionsite private
 keys were to sign not just the Introduction Points and other elements
 currently stored in the .onion directory system, but also the TLS
 certificate, onion keys would bind the TLS certificate to the site as
@@ -742,25 +743,24 @@ website access with improved security.
 
 We assume the cert to be obtained will have the onion address listed
 as a SAN (subjectAltName) in the certificate issued for the registered
-domain name.  This is currently ruled out by CA/Browser Forum policy,
+domain name.  This is currently ruled out for most by CA/Browser Forum policy,
 which only allows registered domain names and wildcards thereof, such
-as *.duckduckgo.com. The only current exception is for EV
+as *.duckduckgo.com. The only exception is for EV
 certificates.  As noted above, these are prohibitive for many site
 owners, hence problematic. We will explore below some of the concerns
 and reasons why the novel approach herein supports a change in this
 policy. But first we describe how this approach will work, assuming
-.onion addresses are allowed as names in certs in the setting
-described.
+onion addresses are allowed as names in DV certs in the setting
+we describe.
 
 At least the same DV level of checking should occur as is currently
 done when issuing certificates to registered domain names. The latest
 ballot-approved CA/B Forum Baseline Requirements list several ways
 that control of a domain can be demonstrated~\cite{cabforum-br}.  The
-most familiar is probably via email to administrator@[registered domain]
-or similar address. This is problematic for .onion addresses.
-
-It is not as reasonable to assume that an email infrastructure
-corresponding to the onion address exists.
+most familiar is probably via response to email to
+administrator@[registered domain] or similar address.
+%There may not ba an email infrastructure
+%corresponding to an onion address for a site being set up.
 % Indeed, we are expecting a
 %process with an option to include an onion address when obtaining a
 %certificate via Let's Encrypt.  For most users, this will need to be
@@ -773,11 +773,11 @@ corresponding to the onion address exists.
 %entry for the onion address, and the draft RFC mentioned above (on
 %.onion as a special-use domain name) explicitly prohibits registering
 %onion addresses. 
-Fortunately, the Baseline Requirements also permit
+The Baseline Requirements also permit
 that the applicant for a certificate can demonstrate the ability
 to make a requested change, e.g. adding a nonce, to a
 page under a domain name that terminates in the requested domain name. 
-A  validation query protocol can be used
+So, a  validation query protocol can be used
 that freshly connects to the onionsite and asks if it is acceptable to
 certify association of the onionsite with the registered domain.  This
 can also serve as a check that an onionsite the user just set up is
@@ -792,7 +792,6 @@ onion name that is being bound as well as the registered domain name.
 registered domain name, although doing this for a small number of
 registered domains and a similarly small number of onion addresses
 might be made to work as well.)
-
 If someone were to obtain a certificate for multiple registered domain
 names by showing control of only one, they could thereby fraudulently
 authenticate others covered by the certificate. The
@@ -818,7 +817,7 @@ it, how should a client connect to the onionsite? If connection
 to the onion address has been requested, e.g., by the user
 clicking on a link to that address, then the connection should
 proceed as normal and the browser should display appropriately for a
-DV certified destination. But a client may request a connection
+DV-certified destination. But a client may request a connection
 to the registered-domain address associated in the certificate
 and be automatically redirected to the onionsite as a security
 enhancement. This could be done by additions to the HTTPS Everywhere
@@ -837,9 +836,9 @@ at the unencrypted address.  Like HSTS, HTTPS Everywhere also helps
 guard against SSLStrip and similar attacks. HTTPS Everywhere
 also includes the SSL Observatory mentioned above.
 
-If HTTPS Everywhere redirects to an onionsite, normal browser
-behavior will be to display the onion address. One could rewrite
-the brwoser logic, but this is 
+%If HTTPS Everywhere redirects to an onionsite, normal browser
+%behavior will be to display the onion address. One could rewrite
+%the browser logic, but this is 
 
 Another advantage of relying on HTTPS Everywhere is that there will
 be no DNS lookup of IP address associated with the domain name.
@@ -909,36 +908,37 @@ of DNS lookups exiting the Tor network can affect such connections.
 
 \noindent{\bf An onion by any other name would cert as sweet}
 
-Why not permit onion addreses as names in certificates in the above
+Why not permit onion addresses as names in certificates in the above
 setting? Two broad classes of objections have been raised to us in
 CA/B Forum discussions and discussions with CA/B Forum members.
 
 First, currently deployed onion addresses and protocols rely on SHA-1
 and RSA-1024, both of which are recognized to have reached their
-effective cryptographic security end-of-life. But, the Tor
-client and relay software has already transitioned in stable releases
-to SHA-256 and ed25519, which are generally accepted as adequate for
-the foreseeable future. And Tor should transition onion services to
-these within the year. So any valid objections based on this concern
-must be very short-lived.  More importantly, however, these onion
-protections can only add to the protections offered by TLS and the
-accompanying cert when combined as described above. Breaking the
+effective cryptographic security end-of-life. But, the Tor client and
+relay software has already transitioned in stable releases to SHA-256
+and ed25519, which are generally accepted as adequate for the
+foreseeable future. And Tor is expected to transition onion services
+to these within the year. So any valid objections based on this
+concern must be very short-lived.  More importantly, when combined as
+described above, these onion protections can only add to the
+protections offered by TLS and the accompanying cert. Breaking the
 private RSA-1024 key associated with an onion address that has an
 appropriately stronger TLS key and cert does not by itself allow one
-to subvert a certified TLS session with the onionsite. And MitM,
-cipher degradation, or other attacks on the cert or TLS are not
-possible when connecting to an onion address unless one also breaks
+to subvert a certified TLS session with the onionsite. Conversely,
+MitM, cipher degradation, or other attacks on the cert or TLS instance
+are not possible when connecting to an onion address unless one also breaks
 the self-authentication.
 
 Second, for various reasons there is some desire to support CA's being
-able to link ``real-world'' identities as occurs when validating
-registered domain names, which is why only EV certs have been approved
-for onion addresses. But the above only proposes that DV certs for
-onion addresses be issued when fully bound to a registered domain name
-by the same validation that would permit the cert issuance for the
-registered domain name; whatever benefits such linking provides is
-just as strongly supported for the onion address as would be supported
-when issuing a cert for the registered domain name by itself.
+able to link ``real-world'' identities to issued certificates as
+occurs when validating registered domain names, which is why only EV
+certs have been approved for onion addresses. But the above only
+proposes that DV certs for onion addresses be issued when fully bound
+to a registered domain name by the same validation that would permit
+the cert issuance for the registered domain name; whatever benefits
+such linking provides is just as strongly supported for the onion
+address as would be supported when issuing a cert for the registered
+domain name by itself.
 
 \section{Conclusion}
 
@@ -960,8 +960,8 @@ applications.
 
 \point{Acknowledgments}
 % \section*{Acknowledgments}
-We thank the anonymous reviewers of an earlier version for their
-feedback and suggestions.  We have also benefited from conversations
+We thank the anonymous reviewers for their feedback and suggestions.
+We have also benefited from conversations on the topcis of this paper
 with many people including Richard Barnes, Roger Dingledine, Peter
 Eckersley, Eric Mill, Alec Muffett, Mike Perry, Seth Schoen, and Ryan
 Sleevi.
