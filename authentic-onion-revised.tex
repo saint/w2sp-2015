@@ -101,7 +101,7 @@ griffin@cryptolab.net}
 \begin{abstract}
   Tor is a communications infrastructure widely used for unfettered
   and anonymous access to Internet websites. Tor is also used to
-  access sites on the .onion domain.  The focus of .onion use
+  access sites on the reserved domain .onion.  The focus of .onion use
   and discussion has traditionally been on the offering of hidden
   services, services that separate their reachability from the
   identification of their IP addresses. We argue that Tor's .onion
@@ -145,7 +145,7 @@ also provides protocols for connecting to services on the
 reserved top level domain .onion, which are only accessible via Tor.
 In this paper we explore using Tor's .onion infrastructure so that
 individuals operating a website can create authentication, integrity
-and other guarantees more simply, easily, fully, and cheaply
+and other guarantees more simply, easily, fully, and inexpensively
 than by other currently available means.
 
 Tor's onionsites have been advocated since their introduction as a way
@@ -263,9 +263,9 @@ complexity, latency, and network overhead of the several Tor circuits
 needed to reach Introduction Points and Rendezvous Points is not
 needed to provide those protections. There are nonetheless, also some
 performance advantages to providing an onion service to the users
-wishing to connect to one's site via Tor (e.g., skirting exit relay
-bandwidth limitations). And Tor proposals (the Tor equivalent of IETF
-RFCs) to standardize further simplified onion services without
+wishing to connect to one's site via Tor (e.g., skirting effects of
+exit relay bandwidth scarcity). And Tor proposals (the Tor equivalent
+of IETF RFCs) to standardize further simplified onion services without
 location hiding are in the works. Facebook already uses such
 simplifications in offering its onion service.
 
@@ -322,8 +322,8 @@ design, existing approaches to naming have evolved effective usage and
 infrastructure that we can leverage. We will focus herein on
 approaches that link onion addresses to already meaningful ways of
 referring to sites. In particular, we focus on the case where one controls
-a registered domain name, although binding to other meaningful
-web locations is also possible.
+a registered domain name; although binding to other meaningful
+web locations (such as a Facebook page or WordPress blog) is also possible.
 
 If one has a registered domain name,
 why not just obtain certificates from traditional authorities as
@@ -436,12 +436,12 @@ onion service to provide better performance, security, and user
 experience for Tor users than they are able to offer simply having
 those users connect to their site over a simple Tor circuit connecting
 to facebook.com~\cite{7686-and-all}. On the other hand, those with a
-small personal site may discover that access to it is blocked by
-their hosting provider.  Thus, when Glenn Sorrentino, a product
-designer, realized this was true of his site glennsorrentino.com, he
-set up a version of that site on a small personal system at
+small personal site may discover that access to it from Tor exits is
+blocked by their hosting provider.  Thus, when Glenn Sorrentino, a
+product designer, realized this was true of his site glennsorrentino.com,
+he set up a version of that site on a small personal system at
 at3o24mj2rfabkca.onion. This provides other benefits as well, but his
-motivation was to allow reachability via Tor. (Since the Tor network
+motivation was to allow reachability for Tor users. (Since the Tor network
 is designed to be reached even by users experiencing censorship,
 another possible way to solve this same problem would be to run the
 site as an onion service from the same web server but
@@ -545,7 +545,7 @@ to make it available to users not coming over Tor.
 % difficult. 
 An onionsite could typically still be accessed via Tor2web, a website
 that proxies connections from non-Tor clients to
-onionsites~\cite{tor2web}.  Whatever availability such proxying
+onionsites~\cite{tor2web}.  But, whatever availability such proxying
 services provide, they inherently operate as at best an overtly
 acknowledged man-in-the-middle on connections to onionsites.  Since we
 are focused on not merely maintaining but improving authentication in
@@ -639,6 +639,10 @@ disabled by default.  Many privacy-conscious users do enable the
 NoScript extension to block javascript as well.  Despite this, rich
 content such as video, audio, and interactive storytelling are still
 available for designers willing to use HTML5 and CSS3.
+(Of course if they wish to offer access to their
+site at the registered domain via non-Tor browsers, they may
+need to test other browsers and/or provide somewhat different
+offerings at the two versions.)
 
 What we have described so far implies a relatively manual
 authentication of PGP/GPG signatures. It would be natural and
@@ -702,14 +706,15 @@ hierarchical centralized chain of trust delegated down from some
 ultimate national or global corporate trust anchor.
 
 PGP remains much less familiar than
-TLS\@. Although popular familiarity is not so much with TLS as with
-interfaces that tell the user little more than whether or not TLS is
+TLS\@. Popular familiarity is, however, not so much with TLS as with
+interfaces that tell the user little more than whether or not TLS 
+and certs from default accepted authorities are
 in operation at all, which is roughly as it should be for usable
 security. As noted, similar interfaces for PGP have been designed but
 have not yet received the extensive development of TLS interfaces,
 unsurprising given the fundamental role of TLS in global ecommerce.
 For those who do not otherwise rely on the social or local protections
-of PGP's web of trust TLS certificates are likely to remain the
+of PGP's web of trust, TLS certificates are likely to remain the
 primary ground of linking public, human-readable domain names to the
 signatures authenticating websites.
 
@@ -749,7 +754,7 @@ certificates, the self-authentication of onion addresses also adds to
 this trust: in the conventional sense that certificate transparency
 addresses, in authentication of the route not just the destination,
 and both of these in a way more directly under website owner control. 
-But, it is not just the little guy. We have already noted some of the
+But, it is not just the little guy. We have already noted a few of the
 increasing number of prominent companies that offer onion
 services. Also, the General Services Administration negotiates
 federal-friendly Terms of Service amendments for the rest of the U.S.\
@@ -871,8 +876,8 @@ entirely different purpose than offering a secure version of the site
 at the unencrypted address.  Like HSTS, HTTPS Everywhere also helps
 guard against SSLStrip and similar attacks. HTTPS Everywhere
 also includes the SSL Observatory mentioned above.
-(Though a much more significant difference from current HTTPS
-Everywhere, note that the ruleset could be expanded allow redirection
+(Though it would be a much more significant difference from current HTTPS
+Everywhere, note that the ruleset could be expanded to allow redirection
 to onionsites that are using the GPG approach to binding described
 above.)
 
@@ -1006,11 +1011,11 @@ today.  At the time, the need to provide users with such options
 seemed the province of the paranoid rather than standard good
 practice. Whether or not our specific design recommendations are
 adopted, we hope readers can see in our proposals similar prospects
-for general adoption of the stronger and broader authentication and
-confidentiality offered by onionsites in the years to come. We also
-hope our expanded view of the possibilities created by Tor's onion
-services will encourage others to explore this fascinating system for
-other interesting properties and applications.
+for general adoption in the years to come of the stronger and broader
+authentication and confidentiality offered by onionsites. We also hope
+our expanded view of the possibilities created by Tor's onion services
+will encourage others to explore this fascinating system for other
+interesting properties and applications.
 
 
 \point{Acknowledgments}
