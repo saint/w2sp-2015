@@ -59,8 +59,8 @@
 % custom commands
 \newcommand{\etal}{{\em et al.}}
 \newcommand{\naive}{na\"{\i}ve }
-%\newcommand{\point}[1]{\vspace{2mm} \noindent\textbf{#1}}
-\newcommand{\point}[1]{\noindent\textbf{#1}.}
+\newcommand{\point}[1]{\vspace{2mm} \noindent\textbf{#1}}
+%\newcommand{\point}[1]{\noindent\textbf{#1}.}
 \newcommand{\todo}[1]{\textbf{\color{red}[TODO: #1]}}
 \newcommand{\rob}[1]{\textbf{\color{blue}[rob: #1]}}
 \newcommand{\citeme}{\textbf{\color{red} {cite}}\xspace}
@@ -167,7 +167,7 @@ will agree that they should be called \emph{onion services} or at
 least something more properly inclusive of the security properties
 they offer.
 
-\noindent{\bf Overview}
+\point{Overview}
 
 After some basics on Tor and onion services, we
 describe a limitation on their self-authentication protection: onion
@@ -604,7 +604,7 @@ certificates for registered domains. We also describe how to
 incorporate these into a relatively transparent and simple system for
 website access with improved security. 
 
-\noindent{\bf Creating the Domain Validation Certificate}
+\point{Creating the Domain Validation Certificate}
 
 We assume the cert to be obtained will have the onion address listed
 as a SAN (subjectAltName) in the certificate issued for the registered
@@ -673,7 +673,7 @@ over the onion address authorizes binding of the registered domain
 name to the onion address.
 
 
-\noindent{\bf Connecting to an onionsite by the client}
+\point{Connecting to an onionsite by the client}
 
 Assuming an onionsite has been configured and certificate issued for
 it, how should a client connect to the onionsite? If connection
@@ -709,7 +709,7 @@ be no DNS lookup of IP address associated with the domain name.
 This means that no attacks on DNS resolution or even observations
 of DNS lookups exiting the Tor network can affect such connections.
 
-\noindent{\bf An onion by any other name would cert as sweet}
+\point{An onion by any other name would cert as sweet}
 
 Why not permit onion addresses as names in certificates in the above
 setting? Two broad classes of objections have been raised to us in
@@ -772,7 +772,7 @@ will encourage others to explore this fascinating system for other
 interesting properties and applications.
 
 
-\point{Acknowledgments}
+\point{Acknowledgments.}
 % \section*{Acknowledgments}
 We thank the anonymous reviewers for their feedback and suggestions.
 We have also benefited from conversations with many people including
